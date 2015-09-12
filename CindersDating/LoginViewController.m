@@ -119,15 +119,15 @@
 
 - (void)updateUserInformation {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@"id,first_name,email,gender,locale,birthday,picture" forKey:@"fields"];
-    
+    [parameters setValue:@"id,first_name,email,gender,birthday" forKey:@"fields"];
+    PFUser *thisUser = [PFUser currentUser];
     
 //    if ([FBSDKAccessToken currentAccessToken]){
     
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters];
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if (!error) {
-            NSLog(@"%@", result);
+            
             NSDictionary *userDictionary = (NSDictionary *)result;
             
             //create URL
@@ -137,33 +137,29 @@
             
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] init];
             
-/*            if (userDictionary[@"name"]) {
-                userProfile[kUserProfileNameKey] = userDictionary[USER_NAME];
-            }*/
+
             if (userDictionary[@"first_name"]) {
                 userProfile[@"first_name"] =userDictionary[@"first_name"];
                 
             }
-/*            if (userDictionary[USER_LOCATION][USER_NAME]) {
-                userProfile[kUserProfileLocationKey] = userDictionary[USER_LOCATION][USER_NAME];
-            }*/
+
             if (userDictionary[@"gender"]) {
                 userProfile[@"gender"] = userDictionary[@"gender"];
             }
-/*            if (userDictionary[USER_BIRTHDAY]) {
-                userProfile[kUserProfileBirthdayKey] = userDictionary[USER_BIRTHDAY];
+           if (userDictionary[@"birthday"]) {
+                userProfile[@"birthday"] = userDictionary[@"birthday"];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateStyle:NSDateFormatterShortStyle];
-                NSDate *date = [formatter dateFromString:userDictionary[USER_BIRTHDAY]];
+                NSDate *date = [formatter dateFromString:userDictionary[@"birthday"]];
                 NSDate *now = [NSDate date];
                 NSTimeInterval seconds = [now timeIntervalSinceDate:date];
                 int age = seconds / 31536000;
-                userProfile[KUserProfileAgeKey] = @(age);
+                userProfile[@"age"] = @(age);
             }
-            if (userDictionary[USER_EMAIL]) {
-                userProfile[kUserProfileEmailKey] = userDictionary[USER_EMAIL];
+            if (userDictionary[@"email"]) {
+                userProfile[@"email"] = userDictionary[@"email"];
             }
-            if (userDictionary[USER_INTERESTED_IN]) {
+/*            if (userDictionary[USER_INTERESTED_IN]) {
                 userProfile[kUserProfileInterestedInKey] = userDictionary[USER_INTERESTED_IN];
             }
             if (userDictionary[USER_RELATIONSHIP_STATUS]) {
@@ -171,11 +167,15 @@
             }
  */
             
-            [[PFUser currentUser] setObject:self.storeAddress forKey:@"picURL"];
-            [[PFUser currentUser] setObject:userProfile[@"gender"] forKey:@"gender"];
-            [[PFUser currentUser] setObject:userProfile[@"first_name"] forKey:@"firstName"];
+            [thisUser setObject:self.storeAddress forKey:@"picURL"];
+            [thisUser setObject:userProfile[@"gender"] forKey:@"gender"];
+            [thisUser setObject:userProfile[@"first_name"] forKey:@"firstName"];
+            [thisUser setObject:userProfile[@"age"] forKey:@"age"];
+            [thisUser setObject:userProfile[@"email"] forKey:@"email"];
             
-            [[PFUser currentUser] saveInBackground];
+            NSLog(@"%@", thisUser);
+            
+            [thisUser saveInBackground];
             //[self requestImage];
             
         }
