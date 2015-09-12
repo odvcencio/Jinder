@@ -13,10 +13,11 @@
 		170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170FF25D1BA4722B005FF804 /* Images.xcassets */; };
 		170FF2611BA4722B005FF804 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170FF25F1BA4722B005FF804 /* LaunchScreen.xib */; };
 		170FF26D1BA4722B005FF804 /* CindersDatingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF26C1BA4722B005FF804 /* CindersDatingTests.m */; };
-		170FF27F1BA48C9A005FF804 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF27A1BA48C9A005FF804 /* LoginViewController.m */; };
-		170FF2801BA48C9A005FF804 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF27C1BA48C9A005FF804 /* PageContentViewController.m */; };
 		170FF2811BA48C9A005FF804 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF27E1BA48C9A005FF804 /* ViewController.m */; };
-		170FF2831BA48CD8005FF804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2821BA48CD8005FF804 /* Main.storyboard */; };
+		170FF28B1BA490BB005FF804 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2851BA490BB005FF804 /* LoginViewController.m */; };
+		170FF28C1BA490BB005FF804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2861BA490BB005FF804 /* Main.storyboard */; };
+		170FF28D1BA490BB005FF804 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2881BA490BB005FF804 /* PageContentViewController.m */; };
+		170FF28E1BA490BB005FF804 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF28A1BA490BB005FF804 /* ViewController.m */; };
 		358935A11BA48301000B2E55 /* ConnectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359D1BA48301000B2E55 /* ConnectionListViewController.m */; };
 		358935A21BA48301000B2E55 /* PrivateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359F1BA48301000B2E55 /* PrivateMessageViewController.m */; };
 		358935A31BA48301000B2E55 /* StoryboardInteraction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935A01BA48301000B2E55 /* StoryboardInteraction.storyboard */; };
@@ -74,13 +75,15 @@
 		170FF2661BA4722B005FF804 /* CindersDatingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CindersDatingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		170FF26B1BA4722B005FF804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170FF26C1BA4722B005FF804 /* CindersDatingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CindersDatingTests.m; sourceTree = "<group>"; };
-		170FF2791BA48C9A005FF804 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "../../../Delight Match App/DelightMatchApp/LoginViewController.h"; sourceTree = "<group>"; };
-		170FF27A1BA48C9A005FF804 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = "../../../Delight Match App/DelightMatchApp/LoginViewController.m"; sourceTree = "<group>"; };
-		170FF27B1BA48C9A005FF804 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = "../../../Delight Match App/PageContentViewController.h"; sourceTree = "<group>"; };
-		170FF27C1BA48C9A005FF804 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = "../../../Delight Match App/PageContentViewController.m"; sourceTree = "<group>"; };
 		170FF27D1BA48C9A005FF804 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = "../../../Delight Match App/ViewController.h"; sourceTree = "<group>"; };
 		170FF27E1BA48C9A005FF804 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = "../../../Delight Match App/ViewController.m"; sourceTree = "<group>"; };
-		170FF2821BA48CD8005FF804 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../../Delight Match App/Main.storyboard"; sourceTree = "<group>"; };
+		170FF2841BA490BB005FF804 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		170FF2851BA490BB005FF804 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		170FF2861BA490BB005FF804 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		170FF2871BA490BB005FF804 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		170FF2881BA490BB005FF804 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		170FF2891BA490BB005FF804 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		170FF28A1BA490BB005FF804 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3589359C1BA48301000B2E55 /* ConnectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionListViewController.h; sourceTree = "<group>"; };
 		3589359D1BA48301000B2E55 /* ConnectionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionListViewController.m; sourceTree = "<group>"; };
 		3589359E1BA48301000B2E55 /* PrivateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageViewController.h; sourceTree = "<group>"; };
@@ -276,13 +279,15 @@
 		358935E51BA48559000B2E55 /* Main - Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				170FF2791BA48C9A005FF804 /* LoginViewController.h */,
-				170FF27A1BA48C9A005FF804 /* LoginViewController.m */,
-				170FF27B1BA48C9A005FF804 /* PageContentViewController.h */,
-				170FF27C1BA48C9A005FF804 /* PageContentViewController.m */,
+				170FF2841BA490BB005FF804 /* LoginViewController.h */,
+				170FF2851BA490BB005FF804 /* LoginViewController.m */,
+				170FF2861BA490BB005FF804 /* Main.storyboard */,
+				170FF2871BA490BB005FF804 /* PageContentViewController.h */,
+				170FF2881BA490BB005FF804 /* PageContentViewController.m */,
+				170FF2891BA490BB005FF804 /* ViewController.h */,
+				170FF28A1BA490BB005FF804 /* ViewController.m */,
 				170FF27D1BA48C9A005FF804 /* ViewController.h */,
 				170FF27E1BA48C9A005FF804 /* ViewController.m */,
-				170FF2821BA48CD8005FF804 /* Main.storyboard */,
 			);
 			name = "Main - Storyboard";
 			sourceTree = "<group>";
@@ -407,7 +412,7 @@
 				358935DA1BA48505000B2E55 /* LikeIcon.png in Resources */,
 				358935DC1BA48505000B2E55 /* NameAgeStatusBar.png in Resources */,
 				358935D61BA48505000B2E55 /* delight-intro-white.png in Resources */,
-				170FF2831BA48CD8005FF804 /* Main.storyboard in Resources */,
+				170FF28C1BA490BB005FF804 /* Main.storyboard in Resources */,
 				358935D21BA48505000B2E55 /* matchfeeds.png in Resources */,
 				170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */,
 				358935DD1BA48505000B2E55 /* delight-setting-icon.png in Resources */,
@@ -467,12 +472,13 @@
 			files = (
 				358935A81BA48380000B2E55 /* DelightNewsFeedViewController.m in Sources */,
 				170FF2531BA4722B005FF804 /* AppDelegate.m in Sources */,
-				170FF27F1BA48C9A005FF804 /* LoginViewController.m in Sources */,
+				170FF28B1BA490BB005FF804 /* LoginViewController.m in Sources */,
 				358935AF1BA483C2000B2E55 /* ProfileViewController.m in Sources */,
 				358935B01BA483C2000B2E55 /* EditProfile.m in Sources */,
 				358935A11BA48301000B2E55 /* ConnectionListViewController.m in Sources */,
 				170FF2811BA48C9A005FF804 /* ViewController.m in Sources */,
-				170FF2801BA48C9A005FF804 /* PageContentViewController.m in Sources */,
+				170FF28E1BA490BB005FF804 /* ViewController.m in Sources */,
+				170FF28D1BA490BB005FF804 /* PageContentViewController.m in Sources */,
 				170FF2561BA4722B005FF804 /* CindersDating.xcdatamodeld in Sources */,
 				358935B61BA4840E000B2E55 /* SettingsViewController.m in Sources */,
 				358935A21BA48301000B2E55 /* PrivateMessageViewController.m in Sources */,
