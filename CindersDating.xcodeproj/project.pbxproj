@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		170FF2501BA4722B005FF804 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF24F1BA4722B005FF804 /* main.m */; };
+		170FF2531BA4722B005FF804 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2521BA4722B005FF804 /* AppDelegate.m */; };
+		170FF2561BA4722B005FF804 /* CindersDating.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2541BA4722B005FF804 /* CindersDating.xcdatamodeld */; };
+		170FF2591BA4722B005FF804 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2581BA4722B005FF804 /* ViewController.m */; };
+		170FF25C1BA4722B005FF804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170FF25A1BA4722B005FF804 /* Main.storyboard */; };
+		170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170FF25D1BA4722B005FF804 /* Images.xcassets */; };
+		170FF2611BA4722B005FF804 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170FF25F1BA4722B005FF804 /* LaunchScreen.xib */; };
+		170FF26D1BA4722B005FF804 /* CindersDatingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF26C1BA4722B005FF804 /* CindersDatingTests.m */; };
+		B6AEBD46AABD46C666B54DFF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01C7D2A2AF8C588E498C2EF /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		170FF2671BA4722B005FF804 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 170FF2421BA4722B005FF804 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 170FF2491BA4722B005FF804;
+			remoteInfo = CindersDating;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		170FF24A1BA4722B005FF804 /* CindersDating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CindersDating.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		170FF24E1BA4722B005FF804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		170FF24F1BA4722B005FF804 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		170FF2511BA4722B005FF804 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		170FF2521BA4722B005FF804 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		170FF2551BA4722B005FF804 /* CindersDating.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CindersDating.xcdatamodel; sourceTree = "<group>"; };
+		170FF2571BA4722B005FF804 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		170FF2581BA4722B005FF804 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		170FF25B1BA4722B005FF804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		170FF25D1BA4722B005FF804 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		170FF2601BA4722B005FF804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		170FF2661BA4722B005FF804 /* CindersDatingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CindersDatingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		170FF26B1BA4722B005FF804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		170FF26C1BA4722B005FF804 /* CindersDatingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CindersDatingTests.m; sourceTree = "<group>"; };
+		9ED89F12B7751D87B85775AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C066C1E3686F45DB360E6712 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D01C7D2A2AF8C588E498C2EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		170FF2471BA4722B005FF804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6AEBD46AABD46C666B54DFF /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		170FF2631BA4722B005FF804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		170FF2411BA4722B005FF804 = {
+			isa = PBXGroup;
+			children = (
+				170FF24C1BA4722B005FF804 /* CindersDating */,
+				170FF2691BA4722B005FF804 /* CindersDatingTests */,
+				170FF24B1BA4722B005FF804 /* Products */,
+				F8497C13AC58E69223113B13 /* Pods */,
+				9265102886F9924E2316C64C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		170FF24B1BA4722B005FF804 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				170FF24A1BA4722B005FF804 /* CindersDating.app */,
+				170FF2661BA4722B005FF804 /* CindersDatingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		170FF24C1BA4722B005FF804 /* CindersDating */ = {
+			isa = PBXGroup;
+			children = (
+				170FF2511BA4722B005FF804 /* AppDelegate.h */,
+				170FF2521BA4722B005FF804 /* AppDelegate.m */,
+				170FF2571BA4722B005FF804 /* ViewController.h */,
+				170FF2581BA4722B005FF804 /* ViewController.m */,
+				170FF25A1BA4722B005FF804 /* Main.storyboard */,
+				170FF25D1BA4722B005FF804 /* Images.xcassets */,
+				170FF25F1BA4722B005FF804 /* LaunchScreen.xib */,
+				170FF2541BA4722B005FF804 /* CindersDating.xcdatamodeld */,
+				170FF24D1BA4722B005FF804 /* Supporting Files */,
+			);
+			path = CindersDating;
+			sourceTree = "<group>";
+		};
+		170FF24D1BA4722B005FF804 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				170FF24E1BA4722B005FF804 /* Info.plist */,
+				170FF24F1BA4722B005FF804 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		170FF2691BA4722B005FF804 /* CindersDatingTests */ = {
+			isa = PBXGroup;
+			children = (
+				170FF26C1BA4722B005FF804 /* CindersDatingTests.m */,
+				170FF26A1BA4722B005FF804 /* Supporting Files */,
+			);
+			path = CindersDatingTests;
+			sourceTree = "<group>";
+		};
+		170FF26A1BA4722B005FF804 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				170FF26B1BA4722B005FF804 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9265102886F9924E2316C64C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D01C7D2A2AF8C588E498C2EF /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F8497C13AC58E69223113B13 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C066C1E3686F45DB360E6712 /* Pods.debug.xcconfig */,
+				9ED89F12B7751D87B85775AA /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		170FF2491BA4722B005FF804 /* CindersDating */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 170FF2701BA4722C005FF804 /* Build configuration list for PBXNativeTarget "CindersDating" */;
+			buildPhases = (
+				4A407A8BC0A0EC5B21CEB0E9 /* Check Pods Manifest.lock */,
+				170FF2461BA4722B005FF804 /* Sources */,
+				170FF2471BA4722B005FF804 /* Frameworks */,
+				170FF2481BA4722B005FF804 /* Resources */,
+				29D4A8CDBE16F89C83D5192D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CindersDating;
+			productName = CindersDating;
+			productReference = 170FF24A1BA4722B005FF804 /* CindersDating.app */;
+			productType = "com.apple.product-type.application";
+		};
+		170FF2651BA4722B005FF804 /* CindersDatingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 170FF2731BA4722C005FF804 /* Build configuration list for PBXNativeTarget "CindersDatingTests" */;
+			buildPhases = (
+				170FF2621BA4722B005FF804 /* Sources */,
+				170FF2631BA4722B005FF804 /* Frameworks */,
+				170FF2641BA4722B005FF804 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				170FF2681BA4722B005FF804 /* PBXTargetDependency */,
+			);
+			name = CindersDatingTests;
+			productName = CindersDatingTests;
+			productReference = 170FF2661BA4722B005FF804 /* CindersDatingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		170FF2421BA4722B005FF804 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Xanadu;
+				TargetAttributes = {
+					170FF2491BA4722B005FF804 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					170FF2651BA4722B005FF804 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 170FF2491BA4722B005FF804;
+					};
+				};
+			};
+			buildConfigurationList = 170FF2451BA4722B005FF804 /* Build configuration list for PBXProject "CindersDating" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 170FF2411BA4722B005FF804;
+			productRefGroup = 170FF24B1BA4722B005FF804 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				170FF2491BA4722B005FF804 /* CindersDating */,
+				170FF2651BA4722B005FF804 /* CindersDatingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		170FF2481BA4722B005FF804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				170FF25C1BA4722B005FF804 /* Main.storyboard in Resources */,
+				170FF2611BA4722B005FF804 /* LaunchScreen.xib in Resources */,
+				170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		170FF2641BA4722B005FF804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29D4A8CDBE16F89C83D5192D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A407A8BC0A0EC5B21CEB0E9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		170FF2461BA4722B005FF804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				170FF2531BA4722B005FF804 /* AppDelegate.m in Sources */,
+				170FF2561BA4722B005FF804 /* CindersDating.xcdatamodeld in Sources */,
+				170FF2591BA4722B005FF804 /* ViewController.m in Sources */,
+				170FF2501BA4722B005FF804 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		170FF2621BA4722B005FF804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				170FF26D1BA4722B005FF804 /* CindersDatingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		170FF2681BA4722B005FF804 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 170FF2491BA4722B005FF804 /* CindersDating */;
+			targetProxy = 170FF2671BA4722B005FF804 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		170FF25A1BA4722B005FF804 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				170FF25B1BA4722B005FF804 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		170FF25F1BA4722B005FF804 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				170FF2601BA4722B005FF804 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		170FF26E1BA4722B005FF804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		170FF26F1BA4722B005FF804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		170FF2711BA4722C005FF804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C066C1E3686F45DB360E6712 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CindersDating/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		170FF2721BA4722C005FF804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ED89F12B7751D87B85775AA /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CindersDating/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		170FF2741BA4722C005FF804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CindersDatingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CindersDating.app/CindersDating";
+			};
+			name = Debug;
+		};
+		170FF2751BA4722C005FF804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CindersDatingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CindersDating.app/CindersDating";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		170FF2451BA4722B005FF804 /* Build configuration list for PBXProject "CindersDating" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				170FF26E1BA4722B005FF804 /* Debug */,
+				170FF26F1BA4722B005FF804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		170FF2701BA4722C005FF804 /* Build configuration list for PBXNativeTarget "CindersDating" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				170FF2711BA4722C005FF804 /* Debug */,
+				170FF2721BA4722C005FF804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		170FF2731BA4722C005FF804 /* Build configuration list for PBXNativeTarget "CindersDatingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				170FF2741BA4722C005FF804 /* Debug */,
+				170FF2751BA4722C005FF804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		170FF2541BA4722B005FF804 /* CindersDating.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				170FF2551BA4722B005FF804 /* CindersDating.xcdatamodel */,
+			);
+			currentVersion = 170FF2551BA4722B005FF804 /* CindersDating.xcdatamodel */;
+			path = CindersDating.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 170FF2421BA4722B005FF804 /* Project object */;
+}

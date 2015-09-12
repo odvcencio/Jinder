@@ -1,0 +1,6 @@
+module ParseFacebookUtilsV4 {
+  umbrella header "ParseFacebookUtilsV4-umbrella.h"
+
+  export *
+  module * { export * }
+}
