@@ -1,0 +1,6 @@
+module JSQSystemSoundPlayer {
+  umbrella header "JSQSystemSoundPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}
