@@ -14,8 +14,7 @@
 #import <FBSDKCoreKit/FBSDKApplicationDelegate.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "Constants.h"
-#import "DelightMatchApp/SDWebImage/UIImageView+WebCache.h"
+
 
 
 @interface EditProfile ()<UITextViewDelegate>
@@ -34,10 +33,10 @@
         if ([objects count] > 0) {
             PFObject *user = objects[2];
              NSString *picURL = [user objectForKey:@"picURL"];
-            [self.editProfileImageView sd_setImageWithURL:[NSURL URLWithString: picURL] placeholderImage:[UIImage imageNamed: @"placeholder.png"]];
+//            [self.editProfileImageView sd_setImageWithURL:[NSURL URLWithString: picURL] placeholderImage:[UIImage imageNamed: @"placeholder.png"]];
         } else NSLog(@"error getting the image from data in EditProfile: %@", error);
             }];
-     self.editAboutMeTextView.text = [[PFUser currentUser] objectForKey:kUserTagLineKey];
+//     self.editAboutMeTextView.text = [[PFUser currentUser] objectForKey:kUserTagLineKey];
     
    
     
@@ -73,7 +72,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if ([text isEqualToString:@"\n"]) {
         [self.editAboutMeTextView resignFirstResponder];
-        [[PFUser currentUser] setObject:self.editAboutMeTextView.text forKey:kUserTagLineKey];
+//        [[PFUser currentUser] setObject:self.editAboutMeTextView.text forKey:kUserTagLineKey];
         [[PFUser currentUser] saveInBackground];
         [self.navigationController popViewControllerAnimated:YES];
         return NO;

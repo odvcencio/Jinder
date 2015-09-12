@@ -8,7 +8,6 @@
 #import <Parse/Parse.h>
 #import "SettingsViewController.h"
 #define MILES2KM(miles) (ceil(miles*1609.34))
-#import "YelpMapViewController.h"
 #define MILES2METERS(mi) ((float)mi*1609.34))
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *PhotoSharing;
@@ -226,7 +225,7 @@
     
     }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     YelpMapViewController *webVC = [segue destinationViewController];
     
    // webVC.range = [[NSString alloc]initWithFormat:@"%f", 1609.34*(self.WithinMiles.value)];
@@ -235,7 +234,7 @@
     //////////////////////////////////////////////////////////////////////////////
    // NSLog(@"%@", webVC.range);
     NSLog(@" should segue out ");
-}
+}*/
 // When sugueing out enter this code in the save method  [self performSegueWithIdentifier:@"webViewSegue" sender:self];
 
 

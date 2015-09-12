@@ -13,6 +13,10 @@
 		170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170FF25D1BA4722B005FF804 /* Images.xcassets */; };
 		170FF2611BA4722B005FF804 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170FF25F1BA4722B005FF804 /* LaunchScreen.xib */; };
 		170FF26D1BA4722B005FF804 /* CindersDatingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF26C1BA4722B005FF804 /* CindersDatingTests.m */; };
+		170FF27F1BA48C9A005FF804 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF27A1BA48C9A005FF804 /* LoginViewController.m */; };
+		170FF2801BA48C9A005FF804 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF27C1BA48C9A005FF804 /* PageContentViewController.m */; };
+		170FF2811BA48C9A005FF804 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF27E1BA48C9A005FF804 /* ViewController.m */; };
+		170FF2831BA48CD8005FF804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2821BA48CD8005FF804 /* Main.storyboard */; };
 		358935A11BA48301000B2E55 /* ConnectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359D1BA48301000B2E55 /* ConnectionListViewController.m */; };
 		358935A21BA48301000B2E55 /* PrivateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359F1BA48301000B2E55 /* PrivateMessageViewController.m */; };
 		358935A31BA48301000B2E55 /* StoryboardInteraction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935A01BA48301000B2E55 /* StoryboardInteraction.storyboard */; };
@@ -45,10 +49,6 @@
 		358935E21BA48505000B2E55 /* delight-logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935CC1BA48505000B2E55 /* delight-logo-icon.png */; };
 		358935E31BA48505000B2E55 /* delight-placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 358935CD1BA48505000B2E55 /* delight-placeholder.jpg */; };
 		358935E41BA48505000B2E55 /* delight-setting-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935CE1BA48505000B2E55 /* delight-setting-icon.png */; };
-		358935EB1BA485EB000B2E55 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358935E71BA485EB000B2E55 /* LoginViewController.m */; };
-		358935EC1BA485EB000B2E55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358935E91BA485EB000B2E55 /* ViewController.m */; };
-		358935ED1BA485EB000B2E55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935EA1BA485EB000B2E55 /* Main.storyboard */; };
-		358935F01BA48670000B2E55 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358935EF1BA48670000B2E55 /* PageContentViewController.m */; };
 		B6AEBD46AABD46C666B54DFF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01C7D2A2AF8C588E498C2EF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +74,13 @@
 		170FF2661BA4722B005FF804 /* CindersDatingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CindersDatingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		170FF26B1BA4722B005FF804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170FF26C1BA4722B005FF804 /* CindersDatingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CindersDatingTests.m; sourceTree = "<group>"; };
+		170FF2791BA48C9A005FF804 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "../../../Delight Match App/DelightMatchApp/LoginViewController.h"; sourceTree = "<group>"; };
+		170FF27A1BA48C9A005FF804 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = "../../../Delight Match App/DelightMatchApp/LoginViewController.m"; sourceTree = "<group>"; };
+		170FF27B1BA48C9A005FF804 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = "../../../Delight Match App/PageContentViewController.h"; sourceTree = "<group>"; };
+		170FF27C1BA48C9A005FF804 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = "../../../Delight Match App/PageContentViewController.m"; sourceTree = "<group>"; };
+		170FF27D1BA48C9A005FF804 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = "../../../Delight Match App/ViewController.h"; sourceTree = "<group>"; };
+		170FF27E1BA48C9A005FF804 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = "../../../Delight Match App/ViewController.m"; sourceTree = "<group>"; };
+		170FF2821BA48CD8005FF804 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../../Delight Match App/Main.storyboard"; sourceTree = "<group>"; };
 		3589359C1BA48301000B2E55 /* ConnectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionListViewController.h; sourceTree = "<group>"; };
 		3589359D1BA48301000B2E55 /* ConnectionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionListViewController.m; sourceTree = "<group>"; };
 		3589359E1BA48301000B2E55 /* PrivateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageViewController.h; sourceTree = "<group>"; };
@@ -112,13 +119,6 @@
 		358935CC1BA48505000B2E55 /* delight-logo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delight-logo-icon.png"; path = "../../Desktop/DelightMatchApp/delight-logo-icon.png"; sourceTree = "<group>"; };
 		358935CD1BA48505000B2E55 /* delight-placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "delight-placeholder.jpg"; path = "../../Desktop/DelightMatchApp/delight-placeholder.jpg"; sourceTree = "<group>"; };
 		358935CE1BA48505000B2E55 /* delight-setting-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delight-setting-icon.png"; path = "../../Desktop/DelightMatchApp/delight-setting-icon.png"; sourceTree = "<group>"; };
-		358935E61BA485EB000B2E55 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../../Desktop/DelightMatchApp/DelightMatchApp/LoginViewController.h; sourceTree = "<group>"; };
-		358935E71BA485EB000B2E55 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../../Desktop/DelightMatchApp/DelightMatchApp/LoginViewController.m; sourceTree = "<group>"; };
-		358935E81BA485EB000B2E55 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../../Desktop/DelightMatchApp/ViewController.h; sourceTree = "<group>"; };
-		358935E91BA485EB000B2E55 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../Desktop/DelightMatchApp/ViewController.m; sourceTree = "<group>"; };
-		358935EA1BA485EB000B2E55 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../Desktop/DelightMatchApp/Main.storyboard; sourceTree = "<group>"; };
-		358935EE1BA48670000B2E55 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageContentViewController.h; path = ../../Desktop/DelightMatchApp/PageContentViewController.h; sourceTree = "<group>"; };
-		358935EF1BA48670000B2E55 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageContentViewController.m; path = ../../Desktop/DelightMatchApp/PageContentViewController.m; sourceTree = "<group>"; };
 		9ED89F12B7751D87B85775AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C066C1E3686F45DB360E6712 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D01C7D2A2AF8C588E498C2EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,13 +276,13 @@
 		358935E51BA48559000B2E55 /* Main - Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				358935EE1BA48670000B2E55 /* PageContentViewController.h */,
-				358935EF1BA48670000B2E55 /* PageContentViewController.m */,
-				358935E61BA485EB000B2E55 /* LoginViewController.h */,
-				358935E71BA485EB000B2E55 /* LoginViewController.m */,
-				358935E81BA485EB000B2E55 /* ViewController.h */,
-				358935E91BA485EB000B2E55 /* ViewController.m */,
-				358935EA1BA485EB000B2E55 /* Main.storyboard */,
+				170FF2791BA48C9A005FF804 /* LoginViewController.h */,
+				170FF27A1BA48C9A005FF804 /* LoginViewController.m */,
+				170FF27B1BA48C9A005FF804 /* PageContentViewController.h */,
+				170FF27C1BA48C9A005FF804 /* PageContentViewController.m */,
+				170FF27D1BA48C9A005FF804 /* ViewController.h */,
+				170FF27E1BA48C9A005FF804 /* ViewController.m */,
+				170FF2821BA48CD8005FF804 /* Main.storyboard */,
 			);
 			name = "Main - Storyboard";
 			sourceTree = "<group>";
@@ -407,10 +407,10 @@
 				358935DA1BA48505000B2E55 /* LikeIcon.png in Resources */,
 				358935DC1BA48505000B2E55 /* NameAgeStatusBar.png in Resources */,
 				358935D61BA48505000B2E55 /* delight-intro-white.png in Resources */,
+				170FF2831BA48CD8005FF804 /* Main.storyboard in Resources */,
 				358935D21BA48505000B2E55 /* matchfeeds.png in Resources */,
 				170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */,
 				358935DD1BA48505000B2E55 /* delight-setting-icon.png in Resources */,
-				358935ED1BA485EB000B2E55 /* Main.storyboard in Resources */,
 				358935CF1BA48505000B2E55 /* chatfeeds.png in Resources */,
 				358935D81BA48505000B2E55 /* DislikeIcon.png in Resources */,
 				358935DB1BA48505000B2E55 /* About_BG.png in Resources */,
@@ -467,12 +467,12 @@
 			files = (
 				358935A81BA48380000B2E55 /* DelightNewsFeedViewController.m in Sources */,
 				170FF2531BA4722B005FF804 /* AppDelegate.m in Sources */,
+				170FF27F1BA48C9A005FF804 /* LoginViewController.m in Sources */,
 				358935AF1BA483C2000B2E55 /* ProfileViewController.m in Sources */,
 				358935B01BA483C2000B2E55 /* EditProfile.m in Sources */,
-				358935EB1BA485EB000B2E55 /* LoginViewController.m in Sources */,
-				358935F01BA48670000B2E55 /* PageContentViewController.m in Sources */,
-				358935EC1BA485EB000B2E55 /* ViewController.m in Sources */,
 				358935A11BA48301000B2E55 /* ConnectionListViewController.m in Sources */,
+				170FF2811BA48C9A005FF804 /* ViewController.m in Sources */,
+				170FF2801BA48C9A005FF804 /* PageContentViewController.m in Sources */,
 				170FF2561BA4722B005FF804 /* CindersDating.xcdatamodeld in Sources */,
 				358935B61BA4840E000B2E55 /* SettingsViewController.m in Sources */,
 				358935A21BA48301000B2E55 /* PrivateMessageViewController.m in Sources */,
