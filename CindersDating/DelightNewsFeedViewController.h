@@ -4,11 +4,10 @@
 //
 //
 
-#import "PFQueryTableViewController.h"
-#import "PFTableViewCell.h"
+#import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface DelightNewsFeedViewController : PFQueryTableViewController
+@interface DelightNewsFeedViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 
 

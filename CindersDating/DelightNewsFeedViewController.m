@@ -8,261 +8,219 @@
 #import <Parse/Parse.h>
 #import "SettingsViewController.h"
 #import "ProfileViewController.h"
-#import "ConnectionListViewController.h"
 
-@interface DelightNewsFeedViewController ()
+@interface DelightNewsFeedViewController ()<UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) UITableView *tableView;
+
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *text;
 
 @end
 
-@implementation DelightNewsFeedViewController
-
-- (IBAction)selectSettings:(id)sender {
-    NSString * storyboardName = @"StoryboardProfile";
-    NSString * viewControllerID = @"SettingsViewController";
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    SettingsViewController * controller = (SettingsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-    [self presentViewController:controller animated:YES completion:nil];
-    
-}
-- (IBAction)connectionsButton:(id)sender {
-    NSString * storyboardName = @"StoryboardInteraction";
-    NSString * viewControllerID = @"navBar";
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    ConnectionListViewController * controller = (ConnectionListViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-    [self presentViewController:controller animated:YES completion:nil];
+@implementation DelightNewsFeedViewController {
+    NSArray *recipes;
 }
 
 
-- (id)initWithCoder:(NSCoder *)aCoder
-{
-    self = [super initWithCoder:aCoder];
-    if (self) {
-        // The className to query on
-        self.parseClassName = @"_User";
-        
-        // The key of the PFObject to display in the label of the default cell style
-        self.textKey = @"firstName";
-        self.textKey = @"gender";
-        
-      //  self.textKey = @"img";
-        
-        // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = YES;
-        
-        // Whether the built-in pagination is enabled
-        self.paginationEnabled = NO;
-        
-        // The number of objects to show per page
-        self.objectsPerPage = 10;
 
+-(id) init{
+    self = [super init];
+    if(self){
+        user = [[NSMutableArray alloc] init];
+        [self fetchEmployeesFromDatabase];
     }
     return self;
 }
 
 
-- (PFQuery *)queryForTable
-{
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-    return query;
-}
-
-// UITableViewCell
-// PFTableViewCell
-
-- (UITableViewCell *)tableView:(UITableView *)tableView  cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-    static NSString *identifier = @"cell";
-    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (!cell) {
-        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    
-    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
-    nameLabel.text = [object objectForKey:@"firstName"];
-    
-    
-    UILabel *gender = (UILabel*) [cell viewWithTag:102];
-    gender.text = [object objectForKey:@"gender"];
-    
-    
-    // Configure the cell
-    PFFile *thumbnail = [object objectForKey:@"img"];
-    PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
-    thumbnailImageView.image = [UIImage imageNamed:@"delight-placeholder.jpg"];
-    thumbnailImageView.file = thumbnail;
-    [thumbnailImageView loadInBackground];
-    
-    return cell;
-    
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString * storyboardName = @"StoryboardProfile";
-    NSString * viewControllerID = @"ProfileViewController";
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    ProfileViewController * controller = (ProfileViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-    [self presentViewController:controller animated:YES completion:nil];
+-(void) fetchEmployeesFromDatabase{
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                [employees addObject:object];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self.tableView reloadData];
+            });
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 
-//- (instancetype)initWithStyle:(UITableViewStyle)style {
-//    self = [super initWithStyle:style];
-//    if (self) { // This table displays items in the Todo class
-//        self.parseClassName = @"User";
-//        self.textKey = @"firstName";
-//        self.pullToRefreshEnabled = YES;
-//        self.paginationEnabled = YES;
-//        self.objectsPerPage = 25;
-//    }
-//    return self;
-//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
-//
-//- (PFQuery *)queryForTable {
-//    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+//- (IBAction)selectSettings:(id)sender {
+//    NSString * storyboardName = @"StoryboardProfile";
+//    NSString * viewControllerID = @"SettingsViewController";
+//    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+//    SettingsViewController * controller = (SettingsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+//    [self presentViewController:controller animated:YES completion:nil];
 //    
-//    // If no objects are loaded in memory, we look to the cache first to fill the table
-//    // and then subsequently do a query against the network.
-//    if (self.objects.count == 0) {
-//        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-//    }
-//    
-//    [query orderByDescending:@"createdAt"];
-//    
-//    return query;
 //}
 //
 //
 //
-//- (UITableViewCell *)tableView:(UITableView *)tableView
-//         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//                        object:(PFObject *)object {
+///******* //////////////////////////////////////////////////////////////////////////////////// *******/
+//
+//
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
+//
+////    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStyleDone target:self        action:@selector(handleBack: ) ];
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//    self.navigationItem.backBarButtonItem.title = @"Matches";
+//
+//  //  [self refreshCurrentMatches];
+//
+//}
+//
+//
+///******* //////////////////////////////////////////////////////////////////////////////////// *******/
+//
+//
+//
+//#pragma mark - refreshCurrentMatches - pQuery and add to NSMutableArray
+//
+////-(void) refreshCurrentMatches{
+////    
+////    //PFUser *currentUser = [PFUser currentUser];
+////    //
+////    //PFQuery *query = [PFQuery queryWithClassName:@"User"];
+////    
+////    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+////    [query whereKey:@"gender" equalTo:@"male"];
+////    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+////        if (!error) {
+////            // The find succeeded.
+////            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+////            // Do something with the found objects
+////            
+////            [self.currentMatches removeAllObjects];
+////            [self.currentMatches addObjectsFromArray:objects];
+////            [self.tableView reloadData];
+////            
+////            //            for (PFObject *object in objects) {
+////            //                NSLog(@"%@", object.objectId);
+////            //            }
+////            
+////        } else {
+////            // Log details of the failure
+////            NSLog(@"Error: %@ %@", error, [error userInfo]);
+////        }
+////    }];
+////    
+////    
+////}
+//
+//
+//
+///******* //////////////////////////////////////////////////////////////////////////////////// *******/
+//
+//
+//#pragma mark - Parse Data
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+//    // [query whereKey:@"gender" equalTo:@"male"];
+//    
+//    return [query count];
+//}
+//
+///******* //////////////////////////////////////////////////////////////////////////////////// *******/
+//
+//
+////- (UITableViewCell *)tableView:(UITableView *)tableView  cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+////    static NSString *identifier = @"cell";
+////    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+////    
+////    if (!cell) {
+////        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+////    }
+////    
+////    UILabel *name = (UILabel*) [cell viewWithTag:101];
+////    cell.name.text = [object objectForKey:@"firstName"];
+////    
+////    
+////    //    UILabel *gender = (UILabel*) [cell viewWithTag:102];
+////    //    gender.text = [object objectForKey:@"gender"];
+////    
+////    
+////    // Configure the cell
+//////    PFFile *thumbnail = [object objectForKey:@"image"];
+//////    UIImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
+//////    thumbnailImageView.image = [UIImage imageNamed:@"delight-placeholder.jpg"];
+//////    thumbnailImageView.file = thumbnail;
+//////    [thumbnailImageView loadInBackground];
+////    
+////    return cell;
+////    
+////}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//
+//    
+//    
 //    static NSString *cellIdentifier = @"cell";
 //    
-//    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 //    if (!cell) {
-//        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-//                                      reuseIdentifier:cellIdentifier];
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
 //    }
 //    
+//   cell.textLabel.text = [self.currentMatches objectAtIndex:indexPath.row];
+//    
 //    // Configure the cell to show todo item with a priority at the bottom
-//    cell.textLabel.text = object[@"text"];
-//   // cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@",  object[@"priority"]];
+//  //  cell.textLabel.text = object[@"firstName"];
+// //   cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@",  object[@"priority"]];
 //    
 //    return cell;
 //}
 //
 //
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-//}
-
-
-
-/*
-
-- (id)initWithCoder:(NSCoder *)aCoder {
-    
-    self = [super initWithCoder:aCoder];
-    if (self) {
-        // Custom the table
-        
-        // The className to query on
-        self.parseClassName = @"User";
-        
-        // The key of the PFObject to display in the label of the default cell style
-        self.textKey = @"firstName";
-        
-        // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
-        self.imageKey = @"picURL";
-        
-        // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = YES;
-        
-        // Whether the built-in pagination is enabled
-        self.paginationEnabled = YES;
-        
-        // The number of objects to show per page
-        self.objectsPerPage = 20;
-    }
-    
-    
-    return self;
-}
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-}
-
-
-
-- (PFQuery *)queryForTable {
-    
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-
-    return query;
-}
-
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)User {
-    
-    static NSString *cellIdentifier = @"cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-        
-    }
-    
-    // Configure the cell
-    PFFile *thumbnail = [User objectForKey:@"picURL"];
-    PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
-    thumbnailImageView.image = [UIImage imageNamed:@"delight-placeholder.jpg"];
-    thumbnailImageView.file = thumbnail;
-    [thumbnailImageView loadInBackground];
-    
-    // Configure the cell to show todo item with a priority at the bottom
-    // cell.textLabel.User = object[@"User"];
-    // cell.textLabel.text = [User objectForKey:@"firstName"];
-    
-       UILabel *textLabel = (UILabel*) [cell viewWithTag:101];
-       textLabel.text = [User objectForKey:@"firstName"];
-    
-    //    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@",  object[@"priority"]];
-    
-    //    NSLog(@"%@", self.textKey);
-    //    NSLog(@"%@", self.imageKey);
-    
-    return cell;
-    
-}
-
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+//
+//
+///******* //////////////////////////////////////////////////////////////////////////////////// *******/
+//
+// - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+// {
+//     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//     [self performSegueWithIdentifier:@"matchesToChatSegue" sender:indexPath];
+//
+//
+// }
 
 
 
