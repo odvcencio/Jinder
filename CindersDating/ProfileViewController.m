@@ -12,10 +12,8 @@
 #import <FBSDKCoreKit/FBSDKApplicationDelegate.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "Constants.h"
-#import "DelightMatchApp/SDWebImage/UIImageView+WebCache.h"
+//#import "DelightMatchApp/SDWebImage/UIImageView+WebCache.h"
 #import "LoginViewController.h"
-#import "YelpMapViewController.h"
 #import "DelightNewsFeedViewController.h"
 
 @interface ProfileViewController ()
@@ -49,16 +47,16 @@
     NSString * storyboardName = @"StoryboardProfile";
 NSString * viewControllerID = @"YelpkMap";
 UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-YelpMapViewController * controller = (YelpMapViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+//YelpMapViewController * controller = (YelpMapViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
   
-controller.bestFoods = @"asian";//self.popfood.text;
-controller.best_in_miles = self.hometownLabel.text;
+//controller.bestFoods = @"asian";//self.popfood.text;
+//controller.best_in_miles = self.hometownLabel.text;
     
  // self.view.window.rootViewController = controller;
     
 //[controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
 
-    [self presentViewController:controller animated:YES completion:nil];
+//    [self presentViewController:controller animated:YES completion:nil];
 
 }
 
@@ -98,7 +96,7 @@ action:@selector(handleBack:)];
            // NSString *picURL = [user objectForKey:@"picURL"];
             NSString *picURL = @"https://sp.yimg.com/ib/th?id=JN.031gjiPzsFUwYlGCRGrVSQ&pid=15.1&P=0";
             
-            [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString: picURL] placeholderImage:[UIImage imageNamed: @"placeholder.png"]];
+//            [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString: picURL] placeholderImage:[UIImage imageNamed: @"placeholder.png"]];
             
             //self.hometownLabel.text = [NSString stringWithFormat:@"%@",user[kUserProfileKey][kUserProfileLocationKey]];
             self.hometownLabel.text = [NSString stringWithFormat:@"Few minutes away, Active User"];

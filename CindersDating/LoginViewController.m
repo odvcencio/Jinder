@@ -2,8 +2,6 @@
 //  LoginViewController.m
 //  DelightMatchApp
 //
-//  Created by Felicia Ferreira on 7/28/15.
-//  Copyright (c) 2015 Felicia Ferreira. All rights reserved.
 //
 
 #import "LoginViewController.h"
