@@ -41,10 +41,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.activityIndicator.hidden = YES;
-    
-    
-    
-    
     //this is different
     
 }
@@ -63,15 +59,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (void)viewDidAppear:(BOOL)animated {
     
-    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        [self updateUserInformation];
-        [self segueToMatchFeed];
-        
-    }
+    PFUser *current = [PFUser currentUser];
+    
        // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
-    }
+        }
 
 
 
@@ -103,11 +98,12 @@
                  [alertView show];
              }
              
-         } else {
+         } else if (user) {
              
              NSLog(@"here");
              [self updateUserInformation];
              [self segueToMatchFeed];
+             
             // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
          }
          
@@ -134,17 +130,20 @@
             NSString *facebookID = userDictionary[@"id"];
             
             self.storeAddress   = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
+            [thisUser setObject:self.storeAddress forKey:@"picURL"];
             
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] init];
             
 
             if (userDictionary[@"first_name"]) {
                 userProfile[@"first_name"] =userDictionary[@"first_name"];
+                [thisUser setObject:userProfile[@"first_name"] forKey:@"firstName"];
                 
             }
 
             if (userDictionary[@"gender"]) {
                 userProfile[@"gender"] = userDictionary[@"gender"];
+                [thisUser setObject:userProfile[@"gender"] forKey:@"gender"];
             }
            if (userDictionary[@"birthday"]) {
                 userProfile[@"birthday"] = userDictionary[@"birthday"];
@@ -155,11 +154,13 @@
                 NSTimeInterval seconds = [now timeIntervalSinceDate:date];
                 int age = seconds / 31536000;
                 userProfile[@"age"] = @(age);
+               [thisUser setObject:userProfile[@"age"] forKey:@"age"];
             }
             if (userDictionary[@"email"]) {
                 userProfile[@"email"] = userDictionary[@"email"];
+                [thisUser setObject:userProfile[@"email"] forKey:@"email"];
             }
-/*            if (userDictionary[USER_INTERESTED_IN]) {
+/*             if (userDictionary[USER_INTERESTED_IN]) {
                 userProfile[kUserProfileInterestedInKey] = userDictionary[USER_INTERESTED_IN];
             }
             if (userDictionary[USER_RELATIONSHIP_STATUS]) {
@@ -167,13 +168,7 @@
             }
  */
             
-            [thisUser setObject:self.storeAddress forKey:@"picURL"];
-            [thisUser setObject:userProfile[@"gender"] forKey:@"gender"];
-            [thisUser setObject:userProfile[@"first_name"] forKey:@"firstName"];
-            [thisUser setObject:userProfile[@"age"] forKey:@"age"];
-            [thisUser setObject:userProfile[@"email"] forKey:@"email"];
             
-            NSLog(@"%@", thisUser);
             
             [thisUser saveInBackground];
             //[self requestImage];
