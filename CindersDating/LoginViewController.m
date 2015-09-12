@@ -5,6 +5,7 @@
 //
 
 #import "LoginViewController.h"
+#import "DelightNewsFeedViewController.h"
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <FBSDKCoreKit/FBSDKApplicationDelegate.h>
@@ -13,17 +14,15 @@
 
 
 #define USER_PROFILE @"profile"
-#define USER_ID @"id"
-#define USER_NAME @"name"
-#define USER_FIRST_NAME @"first_name"
+
 #define USER_LOCATION @"location"
-#define USER_GENDER @"gender"
+
 #define USER_BIRTHDAY @"birthday"
 #define USER_EMAIL @"email"
 #define USER_INTERESTED_IN @"interested_in"
 #define USER_RELATIONSHIP_STATUS @"relationship_status"
 
-@interface LoginVC () //<NSURLConnectionDataDelegate>
+@interface LoginVC () 
 
 
 @property (strong, nonatomic) IBOutlet UIImageView *loginImage;
@@ -42,13 +41,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.activityIndicator.hidden = YES;
-    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        [self updateUserInformation];
-    }
     
-    NSLog(@" ");
+    
+    
+    
     //this is different
     
+}
+
+-(void) segueToMatchFeed{
+    NSString * storyboardName = @"StoryboardNewsFeed";
+    NSString * viewControllerID = @"DelightNewsFeedViewController";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    
+    DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +64,12 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-
+    
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        [self updateUserInformation];
+        [self segueToMatchFeed];
+        
+    }
        // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
     }
 
@@ -73,9 +85,11 @@
     //login pfuser
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error)
      {
+         //user = [PFUser currentUser];
          [self.activityIndicator stopAnimating];
          self.activityIndicator.hidden=YES;
-         // PFUser *currentUser = [PFUser currentUser];
+         
+         
          if(!user) {
              NSLog(@"No user");
              if(!error) {
@@ -93,6 +107,7 @@
              
              NSLog(@"here");
              [self updateUserInformation];
+             [self segueToMatchFeed];
             // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
          }
          
@@ -107,7 +122,7 @@
     [parameters setValue:@"id,first_name,email,gender,locale,birthday,picture" forKey:@"fields"];
     
     
-    // if ([FBSDKAccessToken currentAccessToken]){
+//    if ([FBSDKAccessToken currentAccessToken]){
     
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters];
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
@@ -117,26 +132,25 @@
             
             //create URL
             NSString *facebookID = userDictionary[@"id"];
-            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
             
             self.storeAddress   = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
             
-            NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:15];
+            NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] init];
             
-/*            if (userDictionary[USER_NAME]) {
+/*            if (userDictionary[@"name"]) {
                 userProfile[kUserProfileNameKey] = userDictionary[USER_NAME];
-            }
-            if (userDictionary[USER_FIRST_NAME]) {
-                userProfile[kUserProfileFirstNameKey] =userDictionary[USER_FIRST_NAME];
+            }*/
+            if (userDictionary[@"first_name"]) {
+                userProfile[@"first_name"] =userDictionary[@"first_name"];
                 
             }
-            if (userDictionary[USER_LOCATION][USER_NAME]) {
+/*            if (userDictionary[USER_LOCATION][USER_NAME]) {
                 userProfile[kUserProfileLocationKey] = userDictionary[USER_LOCATION][USER_NAME];
+            }*/
+            if (userDictionary[@"gender"]) {
+                userProfile[@"gender"] = userDictionary[@"gender"];
             }
-            if (userDictionary[USER_GENDER]) {
-                userProfile[kUserProfileGenderKey] = userDictionary[USER_GENDER];
-            }
-            if (userDictionary[USER_BIRTHDAY]) {
+/*            if (userDictionary[USER_BIRTHDAY]) {
                 userProfile[kUserProfileBirthdayKey] = userDictionary[USER_BIRTHDAY];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateStyle:NSDateFormatterShortStyle];
@@ -155,31 +169,22 @@
             if (userDictionary[USER_RELATIONSHIP_STATUS]) {
                 userProfile[KUserProfileRelationshipStatusKey] = userDictionary[USER_RELATIONSHIP_STATUS];
             }
+ */
             
-            if ([pictureURL absoluteString]) {
-                userProfile[KUserProfilePictureURLKey] = [pictureURL absoluteString];
-            }
-            
-           
+            [[PFUser currentUser] setObject:self.storeAddress forKey:@"picURL"];
             [[PFUser currentUser] setObject:userProfile[@"gender"] forKey:@"gender"];
             [[PFUser currentUser] setObject:userProfile[@"first_name"] forKey:@"firstName"];
             
-            
-            [[PFUser currentUser] setObject:userProfile forKey:kUserProfileKey];
             [[PFUser currentUser] saveInBackground];
             //[self requestImage];
             
-            NSString * storyboardName = @"Main";
-            NSString * viewControllerID = @"InterestViewController";
-            UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-            InterestViewController * controller = (InterestViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-            [self presentViewController:controller animated:YES completion:nil];
-        }*/
-//        else {
-//            NSLog(@"Error in FB request: %@", error);
         }
-    }];
-}
+        else {
+            NSLog(@"Error in FB request: %@", error);
+            }
+        }];
+    }
+
 @end
 
 

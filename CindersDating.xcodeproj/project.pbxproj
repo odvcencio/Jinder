@@ -17,6 +17,19 @@
 		170FF28C1BA490BB005FF804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2861BA490BB005FF804 /* Main.storyboard */; };
 		170FF28D1BA490BB005FF804 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2881BA490BB005FF804 /* PageContentViewController.m */; };
 		170FF28E1BA490BB005FF804 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF28A1BA490BB005FF804 /* ViewController.m */; };
+		170FF29A1BA499BB005FF804 /* interests.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2901BA499BB005FF804 /* interests.png */; };
+		170FF29B1BA499BB005FF804 /* invitechat.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2911BA499BB005FF804 /* invitechat.png */; };
+		170FF29C1BA499BB005FF804 /* LikeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2921BA499BB005FF804 /* LikeIcon.png */; };
+		170FF29D1BA499BB005FF804 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2931BA499BB005FF804 /* location.png */; };
+		170FF29E1BA499BB005FF804 /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2941BA499BB005FF804 /* map-icon.png */; };
+		170FF29F1BA499BB005FF804 /* map-icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2951BA499BB005FF804 /* map-icon1.png */; };
+		170FF2A01BA499BB005FF804 /* matchfeeds.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2961BA499BB005FF804 /* matchfeeds.png */; };
+		170FF2A11BA499BB005FF804 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2971BA499BB005FF804 /* settings.png */; };
+		170FF2A21BA499BB005FF804 /* UserImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2981BA499BB005FF804 /* UserImage.png */; };
+		170FF2A31BA499BB005FF804 /* yelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2991BA499BB005FF804 /* yelp.png */; };
+		170FF2A71BA49B11005FF804 /* chatfeeds.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A41BA49B11005FF804 /* chatfeeds.png */; };
+		170FF2A81BA49B11005FF804 /* delight-purple-blank.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A51BA49B11005FF804 /* delight-purple-blank.jpg */; };
+		170FF2A91BA49B11005FF804 /* loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A61BA49B11005FF804 /* loginfb.png */; };
 		358935A11BA48301000B2E55 /* ConnectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359D1BA48301000B2E55 /* ConnectionListViewController.m */; };
 		358935A21BA48301000B2E55 /* PrivateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359F1BA48301000B2E55 /* PrivateMessageViewController.m */; };
 		358935A31BA48301000B2E55 /* StoryboardInteraction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935A01BA48301000B2E55 /* StoryboardInteraction.storyboard */; };
@@ -27,28 +40,6 @@
 		358935B11BA483C2000B2E55 /* StoryboardProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935AE1BA483C2000B2E55 /* StoryboardProfile.storyboard */; };
 		358935B61BA4840E000B2E55 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358935B41BA4840E000B2E55 /* SettingsViewController.m */; };
 		358935B71BA4840E000B2E55 /* StoryboardSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935B51BA4840E000B2E55 /* StoryboardSettings.storyboard */; };
-		358935CF1BA48505000B2E55 /* chatfeeds.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935B91BA48505000B2E55 /* chatfeeds.png */; };
-		358935D01BA48505000B2E55 /* interests.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935BA1BA48505000B2E55 /* interests.png */; };
-		358935D11BA48505000B2E55 /* invitechat.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935BB1BA48505000B2E55 /* invitechat.png */; };
-		358935D21BA48505000B2E55 /* matchfeeds.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935BC1BA48505000B2E55 /* matchfeeds.png */; };
-		358935D31BA48505000B2E55 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935BD1BA48505000B2E55 /* settings.png */; };
-		358935D41BA48505000B2E55 /* yelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935BE1BA48505000B2E55 /* yelp.png */; };
-		358935D51BA48505000B2E55 /* delight-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935BF1BA48505000B2E55 /* delight-logo.png */; };
-		358935D61BA48505000B2E55 /* delight-intro-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C01BA48505000B2E55 /* delight-intro-white.png */; };
-		358935D71BA48505000B2E55 /* loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C11BA48505000B2E55 /* loginfb.png */; };
-		358935D81BA48505000B2E55 /* DislikeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C21BA48505000B2E55 /* DislikeIcon.png */; };
-		358935D91BA48505000B2E55 /* Delight-template-black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 358935C31BA48505000B2E55 /* Delight-template-black.jpg */; };
-		358935DA1BA48505000B2E55 /* LikeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C41BA48505000B2E55 /* LikeIcon.png */; };
-		358935DB1BA48505000B2E55 /* About_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C51BA48505000B2E55 /* About_BG.png */; };
-		358935DC1BA48505000B2E55 /* NameAgeStatusBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C61BA48505000B2E55 /* NameAgeStatusBar.png */; };
-		358935DD1BA48505000B2E55 /* delight-setting-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C71BA48505000B2E55 /* delight-setting-icon.png */; };
-		358935DE1BA48505000B2E55 /* UserImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935C81BA48505000B2E55 /* UserImage.png */; };
-		358935DF1BA48505000B2E55 /* delight-purple-blank.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 358935C91BA48505000B2E55 /* delight-purple-blank.jpg */; };
-		358935E01BA48505000B2E55 /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935CA1BA48505000B2E55 /* map-icon.png */; };
-		358935E11BA48505000B2E55 /* map-icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935CB1BA48505000B2E55 /* map-icon1.png */; };
-		358935E21BA48505000B2E55 /* delight-logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935CC1BA48505000B2E55 /* delight-logo-icon.png */; };
-		358935E31BA48505000B2E55 /* delight-placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 358935CD1BA48505000B2E55 /* delight-placeholder.jpg */; };
-		358935E41BA48505000B2E55 /* delight-setting-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 358935CE1BA48505000B2E55 /* delight-setting-icon.png */; };
 		B6AEBD46AABD46C666B54DFF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01C7D2A2AF8C588E498C2EF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +72,19 @@
 		170FF2881BA490BB005FF804 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		170FF2891BA490BB005FF804 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		170FF28A1BA490BB005FF804 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		170FF2901BA499BB005FF804 /* interests.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interests.png; sourceTree = "<group>"; };
+		170FF2911BA499BB005FF804 /* invitechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invitechat.png; sourceTree = "<group>"; };
+		170FF2921BA499BB005FF804 /* LikeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LikeIcon.png; sourceTree = "<group>"; };
+		170FF2931BA499BB005FF804 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		170FF2941BA499BB005FF804 /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon.png"; sourceTree = "<group>"; };
+		170FF2951BA499BB005FF804 /* map-icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon1.png"; sourceTree = "<group>"; };
+		170FF2961BA499BB005FF804 /* matchfeeds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = matchfeeds.png; sourceTree = "<group>"; };
+		170FF2971BA499BB005FF804 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		170FF2981BA499BB005FF804 /* UserImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserImage.png; sourceTree = "<group>"; };
+		170FF2991BA499BB005FF804 /* yelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yelp.png; sourceTree = "<group>"; };
+		170FF2A41BA49B11005FF804 /* chatfeeds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatfeeds.png; sourceTree = "<group>"; };
+		170FF2A51BA49B11005FF804 /* delight-purple-blank.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "delight-purple-blank.jpg"; sourceTree = "<group>"; };
+		170FF2A61BA49B11005FF804 /* loginfb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginfb.png; sourceTree = "<group>"; };
 		3589359C1BA48301000B2E55 /* ConnectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionListViewController.h; sourceTree = "<group>"; };
 		3589359D1BA48301000B2E55 /* ConnectionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionListViewController.m; sourceTree = "<group>"; };
 		3589359E1BA48301000B2E55 /* PrivateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageViewController.h; sourceTree = "<group>"; };
@@ -97,28 +101,6 @@
 		358935B31BA4840E000B2E55 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		358935B41BA4840E000B2E55 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		358935B51BA4840E000B2E55 /* StoryboardSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardSettings.storyboard; sourceTree = "<group>"; };
-		358935B91BA48505000B2E55 /* chatfeeds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chatfeeds.png; path = ../../Desktop/DelightMatchApp/chatfeeds.png; sourceTree = "<group>"; };
-		358935BA1BA48505000B2E55 /* interests.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = interests.png; path = ../../Desktop/DelightMatchApp/interests.png; sourceTree = "<group>"; };
-		358935BB1BA48505000B2E55 /* invitechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = invitechat.png; path = ../../Desktop/DelightMatchApp/invitechat.png; sourceTree = "<group>"; };
-		358935BC1BA48505000B2E55 /* matchfeeds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = matchfeeds.png; path = ../../Desktop/DelightMatchApp/matchfeeds.png; sourceTree = "<group>"; };
-		358935BD1BA48505000B2E55 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../../Desktop/DelightMatchApp/settings.png; sourceTree = "<group>"; };
-		358935BE1BA48505000B2E55 /* yelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yelp.png; path = ../../Desktop/DelightMatchApp/yelp.png; sourceTree = "<group>"; };
-		358935BF1BA48505000B2E55 /* delight-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delight-logo.png"; path = "../../Desktop/DelightMatchApp/delight-logo.png"; sourceTree = "<group>"; };
-		358935C01BA48505000B2E55 /* delight-intro-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delight-intro-white.png"; path = "../../Desktop/DelightMatchApp/delight-intro-white.png"; sourceTree = "<group>"; };
-		358935C11BA48505000B2E55 /* loginfb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginfb.png; path = ../../Desktop/DelightMatchApp/DelightMatchApp/loginfb.png; sourceTree = "<group>"; };
-		358935C21BA48505000B2E55 /* DislikeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DislikeIcon.png; path = ../../Desktop/DelightMatchApp/DislikeIcon.png; sourceTree = "<group>"; };
-		358935C31BA48505000B2E55 /* Delight-template-black.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Delight-template-black.jpg"; path = "../../Desktop/DelightMatchApp/DelightMatchApp/Delight-template-black.jpg"; sourceTree = "<group>"; };
-		358935C41BA48505000B2E55 /* LikeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LikeIcon.png; path = ../../Desktop/DelightMatchApp/LikeIcon.png; sourceTree = "<group>"; };
-		358935C51BA48505000B2E55 /* About_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = About_BG.png; path = ../../Desktop/DelightMatchApp/DelightMatchApp/About_BG.png; sourceTree = "<group>"; };
-		358935C61BA48505000B2E55 /* NameAgeStatusBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NameAgeStatusBar.png; path = ../../Desktop/DelightMatchApp/DelightMatchApp/NameAgeStatusBar.png; sourceTree = "<group>"; };
-		358935C71BA48505000B2E55 /* delight-setting-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delight-setting-icon.png"; path = "../../Desktop/DelightMatchApp/delight-setting-icon.png"; sourceTree = "<group>"; };
-		358935C81BA48505000B2E55 /* UserImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserImage.png; path = ../../Desktop/DelightMatchApp/DelightMatchApp/UserImage.png; sourceTree = "<group>"; };
-		358935C91BA48505000B2E55 /* delight-purple-blank.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "delight-purple-blank.jpg"; path = "../../Desktop/DelightMatchApp/delight-purple-blank.jpg"; sourceTree = "<group>"; };
-		358935CA1BA48505000B2E55 /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-icon.png"; path = "../../Desktop/DelightMatchApp/map-icon.png"; sourceTree = "<group>"; };
-		358935CB1BA48505000B2E55 /* map-icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-icon1.png"; path = "../../Desktop/DelightMatchApp/map-icon1.png"; sourceTree = "<group>"; };
-		358935CC1BA48505000B2E55 /* delight-logo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delight-logo-icon.png"; path = "../../Desktop/DelightMatchApp/delight-logo-icon.png"; sourceTree = "<group>"; };
-		358935CD1BA48505000B2E55 /* delight-placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "delight-placeholder.jpg"; path = "../../Desktop/DelightMatchApp/delight-placeholder.jpg"; sourceTree = "<group>"; };
-		358935CE1BA48505000B2E55 /* delight-setting-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delight-setting-icon.png"; path = "../../Desktop/DelightMatchApp/delight-setting-icon.png"; sourceTree = "<group>"; };
 		9ED89F12B7751D87B85775AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C066C1E3686F45DB360E6712 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D01C7D2A2AF8C588E498C2EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,28 +229,19 @@
 		358935B81BA484F3000B2E55 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				358935B91BA48505000B2E55 /* chatfeeds.png */,
-				358935BA1BA48505000B2E55 /* interests.png */,
-				358935BB1BA48505000B2E55 /* invitechat.png */,
-				358935BC1BA48505000B2E55 /* matchfeeds.png */,
-				358935BD1BA48505000B2E55 /* settings.png */,
-				358935BE1BA48505000B2E55 /* yelp.png */,
-				358935BF1BA48505000B2E55 /* delight-logo.png */,
-				358935C01BA48505000B2E55 /* delight-intro-white.png */,
-				358935C11BA48505000B2E55 /* loginfb.png */,
-				358935C21BA48505000B2E55 /* DislikeIcon.png */,
-				358935C31BA48505000B2E55 /* Delight-template-black.jpg */,
-				358935C41BA48505000B2E55 /* LikeIcon.png */,
-				358935C51BA48505000B2E55 /* About_BG.png */,
-				358935C61BA48505000B2E55 /* NameAgeStatusBar.png */,
-				358935C71BA48505000B2E55 /* delight-setting-icon.png */,
-				358935C81BA48505000B2E55 /* UserImage.png */,
-				358935C91BA48505000B2E55 /* delight-purple-blank.jpg */,
-				358935CA1BA48505000B2E55 /* map-icon.png */,
-				358935CB1BA48505000B2E55 /* map-icon1.png */,
-				358935CC1BA48505000B2E55 /* delight-logo-icon.png */,
-				358935CD1BA48505000B2E55 /* delight-placeholder.jpg */,
-				358935CE1BA48505000B2E55 /* delight-setting-icon.png */,
+				170FF2A41BA49B11005FF804 /* chatfeeds.png */,
+				170FF2A51BA49B11005FF804 /* delight-purple-blank.jpg */,
+				170FF2A61BA49B11005FF804 /* loginfb.png */,
+				170FF2901BA499BB005FF804 /* interests.png */,
+				170FF2911BA499BB005FF804 /* invitechat.png */,
+				170FF2921BA499BB005FF804 /* LikeIcon.png */,
+				170FF2931BA499BB005FF804 /* location.png */,
+				170FF2941BA499BB005FF804 /* map-icon.png */,
+				170FF2951BA499BB005FF804 /* map-icon1.png */,
+				170FF2961BA499BB005FF804 /* matchfeeds.png */,
+				170FF2971BA499BB005FF804 /* settings.png */,
+				170FF2981BA499BB005FF804 /* UserImage.png */,
+				170FF2991BA499BB005FF804 /* yelp.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -386,35 +359,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				358935D41BA48505000B2E55 /* yelp.png in Resources */,
-				358935D31BA48505000B2E55 /* settings.png in Resources */,
+				170FF2A01BA499BB005FF804 /* matchfeeds.png in Resources */,
+				170FF29F1BA499BB005FF804 /* map-icon1.png in Resources */,
 				358935B71BA4840E000B2E55 /* StoryboardSettings.storyboard in Resources */,
-				358935DE1BA48505000B2E55 /* UserImage.png in Resources */,
+				170FF2A81BA49B11005FF804 /* delight-purple-blank.jpg in Resources */,
+				170FF2A21BA499BB005FF804 /* UserImage.png in Resources */,
 				358935A31BA48301000B2E55 /* StoryboardInteraction.storyboard in Resources */,
-				358935D51BA48505000B2E55 /* delight-logo.png in Resources */,
-				358935E21BA48505000B2E55 /* delight-logo-icon.png in Resources */,
-				358935E31BA48505000B2E55 /* delight-placeholder.jpg in Resources */,
-				358935E01BA48505000B2E55 /* map-icon.png in Resources */,
-				358935D91BA48505000B2E55 /* Delight-template-black.jpg in Resources */,
-				358935D01BA48505000B2E55 /* interests.png in Resources */,
-				358935E11BA48505000B2E55 /* map-icon1.png in Resources */,
-				358935D11BA48505000B2E55 /* invitechat.png in Resources */,
-				358935DF1BA48505000B2E55 /* delight-purple-blank.jpg in Resources */,
+				170FF2A71BA49B11005FF804 /* chatfeeds.png in Resources */,
+				170FF29E1BA499BB005FF804 /* map-icon.png in Resources */,
+				170FF2A11BA499BB005FF804 /* settings.png in Resources */,
+				170FF29C1BA499BB005FF804 /* LikeIcon.png in Resources */,
 				170FF2611BA4722B005FF804 /* LaunchScreen.xib in Resources */,
-				358935E41BA48505000B2E55 /* delight-setting-icon.png in Resources */,
 				358935B11BA483C2000B2E55 /* StoryboardProfile.storyboard in Resources */,
 				358935A91BA48380000B2E55 /* StoryboardNewsFeed.storyboard in Resources */,
-				358935DA1BA48505000B2E55 /* LikeIcon.png in Resources */,
-				358935DC1BA48505000B2E55 /* NameAgeStatusBar.png in Resources */,
-				358935D61BA48505000B2E55 /* delight-intro-white.png in Resources */,
+				170FF29D1BA499BB005FF804 /* location.png in Resources */,
+				170FF2A31BA499BB005FF804 /* yelp.png in Resources */,
 				170FF28C1BA490BB005FF804 /* Main.storyboard in Resources */,
-				358935D21BA48505000B2E55 /* matchfeeds.png in Resources */,
+				170FF29B1BA499BB005FF804 /* invitechat.png in Resources */,
 				170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */,
-				358935DD1BA48505000B2E55 /* delight-setting-icon.png in Resources */,
-				358935CF1BA48505000B2E55 /* chatfeeds.png in Resources */,
-				358935D81BA48505000B2E55 /* DislikeIcon.png in Resources */,
-				358935DB1BA48505000B2E55 /* About_BG.png in Resources */,
-				358935D71BA48505000B2E55 /* loginfb.png in Resources */,
+				170FF29A1BA499BB005FF804 /* interests.png in Resources */,
+				170FF2A91BA49B11005FF804 /* loginfb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
