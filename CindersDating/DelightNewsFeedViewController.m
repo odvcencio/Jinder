@@ -12,7 +12,7 @@
 @interface DelightNewsFeedViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (strong, nonatomic) NSMutableArray *currentMatches;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -20,55 +20,117 @@
 
 @end
 
-@implementation DelightNewsFeedViewController {
-    NSArray *recipes;
-}
+@implementation DelightNewsFeedViewController
+    
 
 
-
--(id) init{
-    self = [super init];
-    if(self){
-        user = [[NSMutableArray alloc] init];
-        [self fetchEmployeesFromDatabase];
+//-------------------------------------------------------------Under contruction
+    
+- (NSMutableArray *)currentMatches
+{
+    if (!_currentMatches) {
+        _currentMatches = [[NSMutableArray alloc] init];
     }
-    return self;
+    return _currentMatches;
+    
 }
 
+//-------------------------------------------------------------
 
--(void) fetchEmployeesFromDatabase{
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+-(void) returnAllUserFromParseThatMatchCurrentUserPreference {
+    
+  //  PFUser *currentUser = [PFUser currentUser];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query whereKey:@"gender" equalTo:@"male"];
+    
+   // [query orderByDescending:@"createdAt"];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-                [employees addObject:object];
-            }
+            [self.currentMatches removeAllObjects];
+            [self.currentMatches addObjectsFromArray:objects];
+            [self.tableView reloadData];
             
-            dispatch_async(dispatch_get_main_queue(), ^ {
-                [self.tableView reloadData];
-            });
-            
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+
+}
+
+//-------------------------------------------------------------End Under Contruction
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Initialize table data
+//    recipes = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self returnAllUserFromParseThatMatchCurrentUserPreference];
+    
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.currentMatches count];
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"SimpleTableCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    
+//    PFUser *usersIMightLike;
+    NSString *usersIMightLikeName = userMatches[@"firstName"];
+    UILabel *text = (UILabel*) [cell viewWithTag:101];
+    
+    text.text = usersIMightLikeName;
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+
+//
+//    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
+//    nameLabel.text = [userMatchesArray objectForKey:@"firstName"];
+
+    
+    return cell;
 }
 
 
 
 
-
-
-
-
-
-
-
+//- (UITableViewCell *)tableView:(UITableView *)tableView  cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+//    static NSString *identifier = @"cell";
+//    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//    
+//    if (!cell) {
+//        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//    }
+//    
+//    UILabel *nameLabel = (UILabel*) [cell viewWithTag:101];
+//    nameLabel.text = [object objectForKey:@"firstName"];
+//    
+//    
+//    
+//    // Configure the cell
+//    PFFile *thumbnail = [object objectForKey:@"img"];
+//    PFImageView *thumbnailImageView = (PFImageView*)[cell viewWithTag:100];
+//    thumbnailImageView.image = [UIImage imageNamed:@"delight-placeholder.jpg"];
+//    thumbnailImageView.file = thumbnail;
+//    [thumbnailImageView loadInBackground];
+//    
+//    return cell;
+//    
+//}
 
 
 
