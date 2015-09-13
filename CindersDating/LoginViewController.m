@@ -47,12 +47,12 @@
 
 -(void) segueToMatchFeed{
     NSString * storyboardName = @"StoryboardNewsFeed";
-    NSString * viewControllerID = @"DelightNewsFeedViewController";
+    NSString * viewControllerID = @"MatchFeedViewController";
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     
     DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
     [self presentViewController:controller animated:YES completion:nil];
-}
+} 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
