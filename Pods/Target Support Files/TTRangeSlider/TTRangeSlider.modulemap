@@ -1,4 +1,4 @@
-module TTRangeSlider {
+framework module TTRangeSlider {
   umbrella header "TTRangeSlider-umbrella.h"
 
   export *

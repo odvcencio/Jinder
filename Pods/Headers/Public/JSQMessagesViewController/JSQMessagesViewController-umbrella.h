@@ -1,1 +1,0 @@
-../../../Target Support Files/JSQMessagesViewController/JSQMessagesViewController-umbrella.h

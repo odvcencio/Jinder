@@ -1,4 +1,4 @@
-module ParseUI {
+framework module ParseUI {
   umbrella header "ParseUI-umbrella.h"
 
   export *

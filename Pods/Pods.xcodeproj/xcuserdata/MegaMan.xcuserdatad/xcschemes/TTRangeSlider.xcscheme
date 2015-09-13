@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45C1415B1533B134E55E050C"
-               BuildableName = "libTTRangeSlider.a"
+               BlueprintIdentifier = "4D6589B6D674297E7E4C9089"
+               BuildableName = "TTRangeSlider.framework"
                BlueprintName = "TTRangeSlider"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

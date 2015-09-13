@@ -5,7 +5,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTRangeSlider.h"
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController<TTRangeSliderDelegate>
 
 @end

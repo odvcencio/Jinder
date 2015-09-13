@@ -1,4 +1,4 @@
-module JSQSystemSoundPlayer {
+framework module JSQSystemSoundPlayer {
   umbrella header "JSQSystemSoundPlayer-umbrella.h"
 
   export *

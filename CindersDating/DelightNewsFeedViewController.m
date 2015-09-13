@@ -26,17 +26,8 @@
 
 
 
--(id) init{
-    self = [super init];
-    if(self){
-        user = [[NSMutableArray alloc] init];
-        [self fetchEmployeesFromDatabase];
-    }
-    return self;
-}
 
-
--(void) fetchEmployeesFromDatabase{
+/*-(void) fetchEmployeesFromDatabase{
     PFQuery *query = [PFQuery queryWithClassName:@"User"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -45,7 +36,6 @@
             // Do something with the found objects
             for (PFObject *object in objects) {
                 NSLog(@"%@", object.objectId);
-                [employees addObject:object];
             }
             
             dispatch_async(dispatch_get_main_queue(), ^ {
@@ -57,7 +47,7 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-}
+*/
 
 
 
