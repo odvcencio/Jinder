@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5406830CB90B4683687044B"
-               BuildableName = "libParseUI.a"
+               BlueprintIdentifier = "D2AD7061F73D6ACD96F18B60"
+               BuildableName = "ParseUI.framework"
                BlueprintName = "ParseUI"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
