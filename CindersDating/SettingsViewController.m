@@ -28,13 +28,18 @@
     self.ageSlider.delegate = self;
     self.ageSlider.minValue = 18;
     self.ageSlider.maxValue = 65;
+    
+  
+    PFUser *currentUser = [PFUser currentUser];
+    
+    NSNumber *lastSelect = [currentUser objectForKey:@"minAge"];
+    NSNumber *lastSelectMax = [currentUser objectForKey:@"maxAge"];
+    
+    [self rangeSlider:self.ageSlider didChangeSelectedMinimumValue:self.lastSelect andMaximumValue:self.lastSelectMax];
 
-     
-    
-    
-    
 
 }
+
 /*-(void)createSlider{
 UIView *lineViewHorizon = [[UIView alloc] initWithFrame:CGRectMake(0, pageTopMargin+inthorizon, self.view.bounds.size.width, 2)];
 lineViewHorizon.backgroundColor = [UIColor blueColor];
@@ -47,8 +52,8 @@ lineViewHorizon.backgroundColor = [UIColor blueColor];
 -(void)rangeSlider:(TTRangeSlider *)sender didChangeSelectedMinimumValue:(float)selectedMinimum andMaximumValue:(float)selectedMaximum {
     if (sender == self.ageSlider){
         NSLog(@"Standard slider updated. Min Value: %.0f Max Value: %.0f", selectedMinimum, selectedMaximum);
-        _minAge = [NSNumber numberWithInt: selectedMinimum];
-        _maxAge = [NSNumber numberWithInt:selectedMaximum];
+       _minAge = [NSNumber numberWithInt: selectedMinimum];
+       _maxAge = [NSNumber numberWithInt: selectedMaximum];
         [self ageSetToParse];
         
     }
@@ -66,7 +71,7 @@ lineViewHorizon.backgroundColor = [UIColor blueColor];
 }
 
 -(void)ageGetFromParse{
-    PFUser *current = [PFUser currentUser];
+   // PFUser *current = [PFUser currentUser];
 
 }
 

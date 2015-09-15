@@ -87,10 +87,10 @@
     
     
 //    PFUser *usersIMightLike;
-    NSString *usersIMightLikeName = userMatches[@"firstName"];
+//    NSString *usersIMightLikeName = userMatches[@"firstName"];
     UILabel *text = (UILabel*) [cell viewWithTag:101];
     
-    text.text = usersIMightLikeName;
+//    text.text = usersIMightLikeName;
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
