@@ -52,7 +52,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="tableView" destination="NZi-jc-qEA" id="cEB-8H-ZQj"/>
+                        <outlet property="tableView" destination="NZi-jc-qEA" id="W3V-jL-t95"/>
                         <segue destination="g3N-Vb-1rI" kind="show" identifier="matchesToChatSegue" id="6LJ-wn-Ek7"/>
                     </connections>
                 </viewController>

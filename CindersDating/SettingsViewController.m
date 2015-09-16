@@ -12,30 +12,45 @@
 @property (strong, nonatomic) NSNumber *minAge;
 @property (strong, nonatomic) NSNumber *maxAge;
 
+@property (nonatomic) NSNumber *selectedMinimum;
+@property (nonatomic) NSNumber *selectedMaximum;
+
+//@property (strong, nonatomic) NSString *min;
+//@property (strong, nonatomic) NSString *max;
+
+@property (weak, nonatomic) IBOutlet UILabel *minLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxLabel;
+
+
 
 @end
 
 @implementation SettingsViewController
 {
-    float *minAgeFloat;
-    float *maxAgeFloat;
+//    float *minAgeFloat;
+//   float *maxAgeFloat;
+    
+//    float *min;
+//    float *max;
 }
 
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     self.ageSlider.delegate = self;
     self.ageSlider.minValue = 18;
-    self.ageSlider.maxValue = 65;
-    
+    self.ageSlider.maxValue = 60;
+ 
+        [self ageGetFromParse];
   
-    PFUser *currentUser = [PFUser currentUser];
+ //   PFUser *currentUser = [PFUser currentUser];
     
-    NSNumber *lastSelect = [currentUser objectForKey:@"minAge"];
-    NSNumber *lastSelectMax = [currentUser objectForKey:@"maxAge"];
+ //   NSNumber *lastSelect = [currentUser objectForKey:@"minAge"];
+ //   NSNumber *lastSelectMax = [currentUser objectForKey:@"maxAge"];
     
-    [self rangeSlider:self.ageSlider didChangeSelectedMinimumValue:self.lastSelect andMaximumValue:self.lastSelectMax];
+ //   [self rangeSlider:self.ageSlider didChangeSelectedMinimumValue:@"lastSelect" andMaximumValue:@"lastSelectMax"];
 
 
 }
@@ -70,10 +85,52 @@ lineViewHorizon.backgroundColor = [UIColor blueColor];
     
 }
 
--(void)ageGetFromParse{
-   // PFUser *current = [PFUser currentUser];
 
+-(void)ageGetFromParse{
+   PFUser *current = [PFUser currentUser];
+    
+    if (current) {
+        // do stuff with the user
+         PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+         [query getObjectInBackgroundWithId:@"ud7EMc6wVR" block:^(PFObject *user, NSError *error) {
+            // Do something with the returned PFObject in the gameScore variable.
+           int min = [[user objectForKey:@"minAge"] intValue];
+           int max = [[user objectForKey:@"maxAge"] intValue];
+             
+             NSString *strFromInt1 = [NSString stringWithFormat:@"%d", min];
+             NSString *strFromInt2 = [NSString stringWithFormat:@"%d", max];
+             
+//             NSNumber *min = user[@"minAge"];
+//             NSNumber *max = user[@"maxAge"];
+             
+             self.minLabel.text = strFromInt1;
+             self.maxLabel.text = strFromInt2;
+            
+        
+       //     [self rangeSlider:self.ageSlider didChangeSelectedMinimumValue:min andMaximumValue:max];
+            
+//            self.ageSlider.delegate = self;
+//            self.ageSlider.minValue = selectedMinimum;
+//            self.ageSlider.maxValue = selectedMaximum;
+            
+     
+            
+            
+            NSLog(@"%@", user);
+            
+            NSLog(@"%@", strFromInt1);
+            NSLog(@"%@", strFromInt2);
+            
+        }];
+    } else {
+        // show the signup or login screen
+    }
+    
+    
+
+    
 }
+
 
 - (IBAction)doneButton:(id)sender {
     

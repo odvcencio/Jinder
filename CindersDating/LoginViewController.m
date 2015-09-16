@@ -46,12 +46,23 @@
 }
 
 -(void) segueToMatchFeed{
-    NSString * storyboardName = @"StoryboardNewsFeed";
-    NSString * viewControllerID = @"DelightNewsFeedViewController";
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+//    NSString * storyboardName = @"StoryboardNewsFeed";
+//    NSString * viewControllerID = @"MatchFeedViewController";
+//    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+//    
+//    DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+//    [self presentViewController:controller animated:YES completion:nil];
     
-    DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-    [self presentViewController:controller animated:YES completion:nil];
+    
+    // Segue to settings for testing purposes
+    
+        NSString * storyboardName = @"StoryboardSettings";
+        NSString * viewControllerID = @"SettingsViewController";
+        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    
+        DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+        [self presentViewController:controller animated:YES completion:nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,9 +74,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    PFUser *current = [PFUser currentUser];
+  //  PFUser *current = [PFUser currentUser];
     
-       // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
+    // testing
+    
+   // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
+        //[self performSegueWithIdentifier:@"segueToProfile" sender:self];
         }
 
 
