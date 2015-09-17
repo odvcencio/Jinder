@@ -12,19 +12,16 @@
 
 @interface DelightNewsFeedViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
-
 @property (strong, nonatomic) NSMutableArray *currentMatches;
-
-@property (weak, nonatomic) IBOutlet UILabel *text;
-
+@property (weak, nonatomic) IBOutlet UILabel *Label;
+// image view
+@property (strong, nonatomic) UIImageView *imageHolder;
 @end
 
 @implementation DelightNewsFeedViewController
-    
 
 
-//-------------------------------------------------------------Under contruction
+//-------------------------------------------------------------Array
     
 - (NSMutableArray *)currentMatches
 {
@@ -35,7 +32,9 @@
     
 }
 
-//-------------------------------------------------------------
+//-------------------------------------------------------------End Array
+
+//-------------------------------------------------------------Start query
 
 -(void) returnAllUserFromParseThatMatchCurrentUserPreference {
     
@@ -57,7 +56,7 @@
 
 }
 
-//-------------------------------------------------------------End Under Contruction
+//-------------------------------------------------------------End query
 
 - (void)viewDidLoad
 {
@@ -81,6 +80,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   
+    
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
@@ -94,18 +95,63 @@
     userAtIndPathName = [userAtIndPath objectForKey:@"firstName"];
     userAtIndPathURL = [userAtIndPath objectForKey:@"picURL"];
     
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:userAtIndPathURL]
-                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+
     
-    cell.textLabel.text = userAtIndPathName;
+    UILabel *nameLabel = (UILabel*) [cell viewWithTag:100];
+    nameLabel.text = [userAtIndPath objectForKey:@"firstName"];
+    
+    
+    UILabel *ageLabel = (UILabel*) [cell viewWithTag:102];
+    
+   // ageLabel.text = [userAtIndPath objectForKey:@"age"];
+    
+    int age = [[userAtIndPath objectForKey:@"age"] intValue];
+    NSString *strFromInt1 = [NSString stringWithFormat:@"%d", age];
+    ageLabel.text = strFromInt1;
+    
+  //
+    
+    // Configure the cell
+    UIImageView *pic = (UIImageView *) [cell viewWithTag:101];
+    
+    
+    [pic sd_setImageWithURL:[NSURL URLWithString:userAtIndPathURL]
+           placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
     
     return cell;
 }
 
+
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
- //   [self performSegueWithIdentifier:@"matchesToChatSegue" sender:indexPath];
+    
+    
+    [self performSegueWithIdentifier:@"goToProfile" sender:self];
+    
+    
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"goToProfile"])
+    {
+        
+        
+        
+        ProfileViewController *profileVC = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        profileVC.profileUser = [self.currentMatches objectAtIndex:indexPath.row];
+        
+
+        
+    }
+
     
     
 }

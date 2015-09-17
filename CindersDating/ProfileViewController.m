@@ -13,11 +13,20 @@
 //#import "DelightMatchApp/SDWebImage/UIImageView+WebCache.h"
 #import "LoginViewController.h"
 #import "DelightNewsFeedViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+
 
 @interface ProfileViewController ()
 
+
+
+
 @property PFUser *otherUser;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageHolder;
+
+// @property (strong, nonatomic) UIImageView *imageHolder;
 //
 @property (strong, nonatomic) NSDictionary *dict;
 
@@ -37,26 +46,6 @@
 }
 
 
-#pragma mark Map Interest IB Action to segue to Yelp Map VC
-
-//mapinterest segue
-- (IBAction)mapInterestButton:(UIButton *)sender {
-  
-    NSString * storyboardName = @"StoryboardProfile";
-NSString * viewControllerID = @"YelpkMap";
-UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-//YelpMapViewController * controller = (YelpMapViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-  
-//controller.bestFoods = @"asian";//self.popfood.text;
-//controller.best_in_miles = self.hometownLabel.text;
-    
- // self.view.window.rootViewController = controller;
-    
-//[controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-
-//    [self presentViewController:controller animated:YES completion:nil];
-
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -69,48 +58,49 @@ action:@selector(handleBack:)];
 
    // PFQuery *query = [PFUser query];
 
-
-    
-    //getting the image from Parse/FaceBook
-    
-    PFQuery *query = [PFUser query];
+    NSObject *profileViewController;
+    NSLog(@"%@", profileViewController);
     
 
+if (self.profileUser) {
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     
-    {
-        if ([objects count]>0) {
-             
-             _otherUser = objects[8];
-//           PFUser *oUser = objects[7];
+    
+    PFObject *userAtIndPath = self.profileUser;
+    
+    NSString *userAtIndPathName;
+    NSString *userAtIndPathURL;
+    
+    userAtIndPathName = [userAtIndPath objectForKey:@"firstName"];
+    userAtIndPathURL = [userAtIndPath objectForKey:@"picURL"];
+    
+   
+    
+    [self.imageHolder sd_setImageWithURL:[NSURL URLWithString:userAtIndPathURL]
+                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                 //
+                             }];
+    
+    
+    
+    int age = [[userAtIndPath objectForKey:@"age"] intValue];
+    NSString *strFromInt1 = [NSString stringWithFormat:@"%d", age];
+    _ageLabel.text = strFromInt1;
+    
+    
+    
+    self.nameLabel.text = [NSString stringWithFormat:userAtIndPathName];
+            
 
-            
-           // _otherUser = user;
-            
-          //  NSLog(@"%@",[user objectForKey:@"picURL"]);
-          //  NSLog(@"%@",[user objectForKey:@"picURL"]);
-          //  NSLog(@"%@",[user["picURL"]);
-           // NSString *picURL = [user objectForKey:@"picURL"];
-            NSString *picURL = @"https://sp.yimg.com/ib/th?id=JN.031gjiPzsFUwYlGCRGrVSQ&pid=15.1&P=0";
-            
-//            [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString: picURL] placeholderImage:[UIImage imageNamed: @"placeholder.png"]];
-            
-            //self.hometownLabel.text = [NSString stringWithFormat:@"%@",user[kUserProfileKey][kUserProfileLocationKey]];
-            self.hometownLabel.text = [NSString stringWithFormat:@"Few minutes away, Active User"];
-            self.ageLabel.text = [NSString stringWithFormat:@"23"];
-            self.aboutMeDesc.text =[NSString stringWithFormat:@"Nursing Student, Love the beach and cats!"];
-            self.nameLabel.text= [NSString stringWithFormat:@"Ashley"];
-            
-            //  self.ageLabel.text = [NSString stringWithFormat:@"%@",user[kUserProfileKey][KUserProfileAgeKey]];
-           // self.aboutMeDesc.text =[NSString stringWithFormat:@"%@", user[kUserTagLineKey]];
-           // self.nameLabel.text= [NSString stringWithFormat:@"%@",user[kUserProfileKey][kUserProfileFirstNameKey]];
-          
-            
-         } else NSLog(@"error in pictureURL getting the image data: %@", error);
-    }];
     
-    }
+  }  // if statement
+    
+}  // viewdidload
+
+
+
+
+
 
 
 #pragma mark Segue Back to New Feeds VC

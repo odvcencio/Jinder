@@ -5,6 +5,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 
 @protocol ProfileViewControllerDelegate <NSObject>
@@ -14,8 +15,13 @@
 
 @end
 
+// @class DelightNewsFeedViewController;
 
 @interface ProfileViewController : UIViewController
+
+// Store Obj coming from Matchfeed
+@property (strong, nonatomic) PFObject *profileUser;
+
 @property (weak, nonatomic) id <ProfileViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet UIImageView *profilePictureImageView;
@@ -31,5 +37,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *aboutMeImage;
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
 @property (strong, nonatomic) IBOutlet UIButton *dislikeButton;
+
+
 
 @end
