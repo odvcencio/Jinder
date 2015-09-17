@@ -17,11 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="188" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NZi-jc-qEA">
-                                <rect key="frame" x="0.0" y="28" width="375" height="683"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NZi-jc-qEA">
+                                <rect key="frame" x="0.0" y="80" width="375" height="683"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="188" id="Ape-9J-4Zt">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="60" id="Ape-9J-4Zt">
                                         <rect key="frame" x="0.0" y="0.0" width="625" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ape-9J-4Zt" id="whB-o5-iax">
@@ -47,8 +47,20 @@
                             <constraint firstItem="NZi-jc-qEA" firstAttribute="leading" secondItem="2Dd-7t-hSy" secondAttribute="leadingMargin" constant="-16" id="gj1-aG-dnL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Message List" id="Fq5-gS-tt7">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="px3-L2-6jU"/>
+                    <navigationItem key="navigationItem" title="Inbox" id="mhv-7B-oA0">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="lsx-Mj-Dae">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="482-nQ-BAs">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectSettings:" destination="O1H-Au-SkK" eventType="touchUpInside" id="O8c-Y9-rbd"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -58,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rf5-9D-COr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-150.5" y="-260.5"/>
+            <point key="canvasLocation" x="-129.5" y="-284.5"/>
         </scene>
         <!--PrivateMessageViewController-->
         <scene sceneID="RrC-z9-vPe">
@@ -79,14 +91,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VrU-aG-Njh">
-                        <barButtonItem key="backBarButtonItem" title="Matches" id="igp-9o-iu7"/>
+                    <navigationItem key="navigationItem" title="Private Convo" id="bkH-TQ-5bW">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="KOf-nx-bFP">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="F6x-Xt-Jia">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectSettings:" destination="g3N-Vb-1rI" eventType="touchUpInside" id="hkd-0P-GV7"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjO-Ke-nGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262.5" y="-260.5"/>
+            <point key="canvasLocation" x="324.5" y="-284.5"/>
         </scene>
         <!--NavBar-->
         <scene sceneID="yXA-4V-qu8">
@@ -106,7 +130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMi-br-BzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-564.5" y="-260.5"/>
+            <point key="canvasLocation" x="-591.5" y="-284.5"/>
         </scene>
     </scenes>
 </document>

@@ -26,10 +26,26 @@
 @end
 
 @implementation PrivateMessageViewController
-- (IBAction)backButton:(UIBarButtonItem *)sender {
- //[self dismissViewControllerAnimated:YES completion:nil];  //matchesToChatSegue
-   // [self performSegueWithIdentifier:@"matchesToChatSegue" sender:self]; yoyoyoyo
+
+
+//-------------------------------------------------------------Segue
+
+// Not working
+//- (IBAction)doneButton:(id)sender {
+//    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
+
+- (IBAction)selectSettings:(id)sender {
+    NSString * storyboardName = @"StoryboardInteraction";
+    NSString * viewControllerID = @"navBar";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    ConnectionListViewController * controller = (ConnectionListViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
+    
 }
+
+//-------------------------------------------------------------End Segue
 
 
 

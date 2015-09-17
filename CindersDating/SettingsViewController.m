@@ -4,6 +4,7 @@
 //
 #import <Parse/Parse.h>
 #import "SettingsViewController.h"
+#import "DelightNewsFeedViewController.h"
 
 
 @interface SettingsViewController ()
@@ -26,14 +27,25 @@
 @end
 
 @implementation SettingsViewController
-{
-//    float *minAgeFloat;
-//   float *maxAgeFloat;
+
+//-------------------------------------------------------------Segue
+
+// Not working
+//- (IBAction)doneButton:(id)sender {
+//
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
+
+- (IBAction)selectSettings:(id)sender {
+    NSString * storyboardName = @"StoryboardNewsFeed";
+    NSString * viewControllerID = @"NavBar";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
     
-//    float *min;
-//    float *max;
 }
 
+//-------------------------------------------------------------End Segue
 
 - (void)viewDidLoad {
     
@@ -132,15 +144,7 @@ lineViewHorizon.backgroundColor = [UIColor blueColor];
 }
 
 
-- (IBAction)doneButton:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation

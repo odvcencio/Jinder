@@ -50,22 +50,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem =
-[[UIBarButtonItem alloc] initWithTitle:@"Back"
-style:UIBarButtonItemStyleDone
-target:self
-action:@selector(handleBack:)];
-
-   // PFQuery *query = [PFUser query];
-
-    NSObject *profileViewController;
-    NSLog(@"%@", profileViewController);
-    
 
 if (self.profileUser) {
     
     
-    PFObject *userAtIndPath = self.profileUser;
+ //   PFObject *userAtIndPath = self.profileUser;
+    
+    PFUser *userAtIndPath = self.profileUser;
+    
+    self.profileUser = userAtIndPath.objectId;
     
     NSString *userAtIndPathName;
     NSString *userAtIndPathURL;

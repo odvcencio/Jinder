@@ -20,9 +20,23 @@
 @end
 
 @implementation ConnectionListViewController
-- (IBAction)backButton:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];    
+
+
+//-------------------------------------------------------------Segue
+
+
+- (IBAction)selectSettings:(id)sender {
+    NSString * storyboardName = @"StoryboardNewsFeed";
+    NSString * viewControllerID = @"NavBar";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
+    
 }
+
+
+//-------------------------------------------------------------End Segue
+
 
 - (NSMutableArray *)currentConversations
 {
@@ -44,9 +58,9 @@
     
     
    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Match Feed" style:UIBarButtonItemStyleDone target:self action:@selector(handleBack: ) ];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-     self.navigationItem.backBarButtonItem.title = @"Matches";
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Match Feed" style:UIBarButtonItemStyleDone target:self action:@selector(handleBack: ) ];
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//     self.navigationItem.backBarButtonItem.title = @"Matches";
     
 
     

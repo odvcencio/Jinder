@@ -7,6 +7,7 @@
 #import "DelightNewsFeedViewController.h"
 #import <Parse/Parse.h>
 #import "SettingsViewController.h"
+#import "ConnectionListViewController.h"
 #import "ProfileViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -20,6 +21,25 @@
 
 @implementation DelightNewsFeedViewController
 
+//-------------------------------------------------------------Segue
+
+- (IBAction)selectSettings:(id)sender {
+    NSString * storyboardName = @"StoryboardSettings";
+    NSString * viewControllerID = @"SettingsViewController";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    SettingsViewController * controller = (SettingsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
+    
+}
+- (IBAction)connectionsButton:(id)sender {
+    NSString * storyboardName = @"StoryboardInteraction";
+    NSString * viewControllerID = @"navBar";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    ConnectionListViewController * controller = (ConnectionListViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+//-------------------------------------------------------------End Segue
 
 //-------------------------------------------------------------Array
     
@@ -128,9 +148,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
-    [self performSegueWithIdentifier:@"goToProfile" sender:self];
+    [self performSegueWithIdentifier:@"goToProfile" sender:indexPath];
     
     
 }
@@ -145,7 +163,7 @@
         
         
         ProfileViewController *profileVC = [segue destinationViewController];
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath = sender; 
         profileVC.profileUser = [self.currentMatches objectAtIndex:indexPath.row];
         
 
