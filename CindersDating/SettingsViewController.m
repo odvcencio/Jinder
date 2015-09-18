@@ -16,25 +16,21 @@
 @property (nonatomic) NSNumber *selectedMinimum;
 @property (nonatomic) NSNumber *selectedMaximum;
 
-//@property (strong, nonatomic) NSString *min;
-//@property (strong, nonatomic) NSString *max;
-
 @property (weak, nonatomic) IBOutlet UILabel *minLabel;
 @property (weak, nonatomic) IBOutlet UILabel *maxLabel;
 
 
+// segemted
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
+@property (nonatomic, assign) NSInteger oldSegmentedIndex;
+@property (nonatomic, assign) NSInteger actualSegmentedIndex;
 
 @end
 
 @implementation SettingsViewController
 
 //-------------------------------------------------------------Segue
-
-// Not working
-//- (IBAction)doneButton:(id)sender {
-//
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
 
 - (IBAction)selectSettings:(id)sender {
     NSString * storyboardName = @"StoryboardNewsFeed";
@@ -55,26 +51,17 @@
     self.ageSlider.minValue = 18;
     self.ageSlider.maxValue = 60;
  
-        [self ageGetFromParse];
+    [self ageGetFromParse];
+    
+    
+    // segemted
+    self.oldSegmentedIndex = -1;
+    self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
   
- //   PFUser *currentUser = [PFUser currentUser];
-    
- //   NSNumber *lastSelect = [currentUser objectForKey:@"minAge"];
- //   NSNumber *lastSelectMax = [currentUser objectForKey:@"maxAge"];
-    
- //   [self rangeSlider:self.ageSlider didChangeSelectedMinimumValue:@"lastSelect" andMaximumValue:@"lastSelectMax"];
 
 
 }
 
-/*-(void)createSlider{
-UIView *lineViewHorizon = [[UIView alloc] initWithFrame:CGRectMake(0, pageTopMargin+inthorizon, self.view.bounds.size.width, 2)];
-lineViewHorizon.backgroundColor = [UIColor blueColor];
-[self.view addSubview:lineViewHorizon];
-[lineViewHorizon removeFromSuperview];
-
-}
-*/
 
 -(void)rangeSlider:(TTRangeSlider *)sender didChangeSelectedMinimumValue:(float)selectedMinimum andMaximumValue:(float)selectedMaximum {
     if (sender == self.ageSlider){
@@ -112,20 +99,9 @@ lineViewHorizon.backgroundColor = [UIColor blueColor];
              NSString *strFromInt1 = [NSString stringWithFormat:@"%d", min];
              NSString *strFromInt2 = [NSString stringWithFormat:@"%d", max];
              
-//             NSNumber *min = user[@"minAge"];
-//             NSNumber *max = user[@"maxAge"];
              
              self.minLabel.text = strFromInt1;
              self.maxLabel.text = strFromInt2;
-            
-        
-       //     [self rangeSlider:self.ageSlider didChangeSelectedMinimumValue:min andMaximumValue:max];
-            
-//            self.ageSlider.delegate = self;
-//            self.ageSlider.minValue = selectedMinimum;
-//            self.ageSlider.maxValue = selectedMaximum;
-            
-     
             
             
             NSLog(@"%@", user);
@@ -143,6 +119,56 @@ lineViewHorizon.backgroundColor = [UIColor blueColor];
     
 }
 
+
+
+- (IBAction)segmentSwitch:(id)sender {
+    UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
+    NSInteger selectedSegment = segmentedControl.selectedSegmentIndex;
+    
+    
+    if (selectedSegment == 0) {
+        // Save currentUser likes men to Parse
+    
+        PFUser *user = [PFUser currentUser];
+        
+        user[@"showMeMen"] = @YES;
+        user[@"showMeWomen"] = @NO;
+        user[@"showMeBoth"] = @NO;
+        
+        [user saveInBackground];
+
+    }
+    
+    if (selectedSegment == 1) {
+        // Save currentUser likes women to Parse
+        PFUser *user = [PFUser currentUser];
+        
+        user[@"showMeWomen"] = @YES;
+        user[@"showMeMen"] = @NO;
+        user[@"showMeBoth"] = @NO;
+        
+        [user saveInBackground];
+        
+    }
+    
+    if (selectedSegment == 2) {
+        // Save currentUser likes both to Parse
+        PFUser *user = [PFUser currentUser];
+        
+        user[@"showMeBoth"] = @YES;
+        user[@"showMeMen"] = @NO;
+        user[@"showMeWomen"] = @NO;
+        
+        [user saveInBackground];
+        
+    }
+    
+    
+    // segmented
+    self.oldSegmentedIndex = self.actualSegmentedIndex;
+    self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
+    
+}
 
 
 

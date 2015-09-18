@@ -84,22 +84,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SHOW ME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76o-b9-btC">
-                                <rect key="frame" x="128" y="387" width="129" height="46"/>
+                                <rect key="frame" x="123" y="387" width="129" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-9n-dDe">
-                                <rect key="frame" x="71" y="441" width="237" height="29"/>
+                                <rect key="frame" x="69" y="441" width="237" height="29"/>
                                 <segments>
                                     <segment title="MEN"/>
                                     <segment title="WOMEN"/>
                                     <segment title="BOTH"/>
                                 </segments>
                                 <color key="tintColor" red="0.60784313729999995" green="0.29411764709999999" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="segmentSwitch:" destination="apk-NQ-sey" eventType="valueChanged" id="BUi-DQ-3dA"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-8a-Tw7">
-                                <rect key="frame" x="164" y="477" width="48" height="30"/>
+                                <rect key="frame" x="162" y="477" width="48" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.60784313729999995" green="0.29411764709999999" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -111,13 +114,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="76o-b9-btC" secondAttribute="centerX" id="1q1-Zd-BHU"/>
                             <constraint firstItem="f1a-ei-E3k" firstAttribute="trailing" secondItem="eyr-Dw-Aqx" secondAttribute="trailingMargin" id="7n9-l5-rGQ"/>
                             <constraint firstItem="wT5-8a-Tw7" firstAttribute="top" secondItem="FCW-9n-dDe" secondAttribute="bottom" constant="8" id="FMQ-JR-Amh"/>
                             <constraint firstItem="FCW-9n-dDe" firstAttribute="top" secondItem="76o-b9-btC" secondAttribute="bottom" constant="8" id="J23-Tu-B5A"/>
                             <constraint firstItem="042-3s-PrH" firstAttribute="trailing" secondItem="eyr-Dw-Aqx" secondAttribute="trailingMargin" id="KCv-un-D0b"/>
-                            <constraint firstAttribute="centerX" secondItem="wT5-8a-Tw7" secondAttribute="centerX" constant="-5.25" id="NVU-lv-d24"/>
-                            <constraint firstAttribute="centerX" secondItem="FCW-9n-dDe" secondAttribute="centerX" id="PEj-KD-Gls"/>
                             <constraint firstItem="kM2-Iv-5E9" firstAttribute="trailing" secondItem="eyr-Dw-Aqx" secondAttribute="trailingMargin" id="Rg7-OV-pgz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ojn-ZD-xGW" secondAttribute="trailing" constant="39" id="Y60-40-3JG"/>
                             <constraint firstItem="Ojn-ZD-xGW" firstAttribute="leading" secondItem="eyr-Dw-Aqx" secondAttribute="leadingMargin" constant="38" id="e9g-Lb-NcY"/>
@@ -130,6 +130,7 @@
                         <outlet property="ageSlider" destination="Ojn-ZD-xGW" id="brB-Df-pjJ"/>
                         <outlet property="maxLabel" destination="uUf-Sb-uKS" id="f9Y-Mh-US3"/>
                         <outlet property="minLabel" destination="TyY-oQ-dyU" id="qka-40-mNN"/>
+                        <outlet property="segmentedControl" destination="FCW-9n-dDe" id="nqj-Zr-wej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="our-9z-X6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
