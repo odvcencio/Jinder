@@ -54,8 +54,43 @@
 
 //-------------------------------------------------------------End Array
 
-//-------------------------------------------------------------Start query
 
+//------------------------------------------------------------------------------Start PFClouf function
+
+-(void) returnAllUserFromParseThatMatchCurrentUserPreference1 {
+    
+// poPFUser *current = [PFUser currentUser];
+
+// cloud function
+[PFCloud callFunctionInBackground:@"matchFeed"
+                   withParameters:nil
+                            block:^(NSObject *objects, NSError *error) {
+                                if (!error) {
+                                    // ratings is 4.5
+                               //     if ([objects  isEqual:@"They fucking match"]) {
+                                        //  NSLog(@"is it object: %@", total);
+                                        
+                                        [self.currentMatches removeAllObjects];
+                                        [self.currentMatches addObject:objects];
+                                        [self.tableView reloadData];
+                                    
+                            //            NSString *what = @"Go to your inbox and say Hi";
+                                        
+                      
+                                        
+                                        
+                               //     }
+                                    
+                                }
+                            }];
+
+
+//------------------------------------------------------------------------------End PFClouf function
+
+}
+
+//-------------------------------------------------------------Start query
+/*
 -(void) returnAllUserFromParseThatMatchCurrentUserPreference {
     
   //  PFUser *currentUser = [PFUser currentUser];
@@ -75,7 +110,7 @@
     }];
 
 }
-
+*/
 //-------------------------------------------------------------End query
 
 - (void)viewDidLoad
@@ -86,7 +121,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self returnAllUserFromParseThatMatchCurrentUserPreference];
+    [self returnAllUserFromParseThatMatchCurrentUserPreference1];
+    
+    // Adjust tableview
+    
+    [self.tableView setContentInset:UIEdgeInsetsMake(0, -20, 0, 0)];
     
 }
 

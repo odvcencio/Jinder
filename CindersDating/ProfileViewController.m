@@ -19,18 +19,9 @@
 
 @interface ProfileViewController ()
 
-
-
-
-@property PFUser *otherUser;
-
 @property (weak, nonatomic) IBOutlet UIImageView *imageHolder;
-
-// @property (strong, nonatomic) UIImageView *imageHolder;
-//
 @property (strong, nonatomic) NSDictionary *dict;
-
-// @property(strong, nonatomic) NSString *saveIdHere;
+@property (weak, nonatomic) IBOutlet UILabel *match;
 
 @end
 
@@ -58,7 +49,7 @@ if (self.profileUser) {
     
     PFUser *userAtIndPath = self.profileUser;
     
-    self.profileUser = userAtIndPath.objectId;
+ //   self.profileUser = userAtIndPath.objectId;
     
     NSString *userAtIndPathName;
     NSString *userAtIndPathURL;
@@ -126,212 +117,81 @@ DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[s
 
 - (IBAction)likeButton:(UIButton *)sender {
     
+
+    
+    PFObject *selected = self.profileUser;
     PFUser *current = [PFUser currentUser];
-  //  self.objectId = query;
- //       NSString *theActualId = self.objectId.get("objectId");
-  //  NSArray *profileSelected = [query findObjects];
     
-  //   PFQuery *user = [PFUser query];
-//    [query getUserObjectWithId:@"HL7SrF7OwK"];
-//     self.theActualId = query[@"objectId"];
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+
     
-        
-        
-        [dic setObject:_otherUser.objectId forKey:@"userID"];
+    // Save here
+    PFObject *likes = [PFObject objectWithClassName:@"UserLikes"];
     
-        
+    [likes setObject:current forKey:@"userID"];
+    [likes setObject:selected forKey:@"userLiked"];
+    
+    
+    [likes saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if(succeeded){
+            
+        }else{
+            NSLog(@"failed");
+        }
+    }];
+    
+    
+    
+    // Check for matches
+
+      NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    
+    
+    
+        [dic setObject:selected.objectId forKey:@"userID"];
+    
         NSLog(@"the obj: %@", dic);
     
     
-        
+        // cloud function
         [PFCloud callFunctionInBackground:@"match"
                            withParameters:dic     //   @{@"userIDD": @"HL7SrF70wK"}
                                     block:^(NSString *total, NSError *error) {
                                         if (!error) {
                                             // ratings is 4.5
-                                            NSLog(@"is it object: %@", total);
-                                            // avgPoint = object;
+                                            if ([total  isEqual:@"They fucking match"]) {
+                                              //  NSLog(@"is it object: %@", total);
+                                                
+                                                NSString *what = @"Go to your inbox and say Hi";
+                                                
+                                                self.match.text = what;
+                                                
+                                                
+                                            }
+                
                                         }
                                     }];
-        PFObject *likes = [PFObject objectWithClassName:@"UserLikes"];
-    
-        [likes setObject:current forKey:@"userID"];
-        [likes setObject:_otherUser forKey:@"userLiked"];
-    
-    
-        [likes saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-            if(succeeded){
-    
-            }else{
-                NSLog(@"failed");
-            }
-        }];
-    
-    
-    
-    
- //   [user getObjectInBackgroundWithId:@"HL7SrF70wK"];
-    
-  //  [user whereKey:@"objectId" equalTo:@"HL7SrF7OwK"];
-    
-//    NSString *objectid = [self.objectId];
-    
-//    NSLog(@"The object id is: %@", objectid);
-    
- //   NSString *objectId = user;
-    
-   //  NSString *objectID = users;
-   //    self.senderId = user.objectId;
-    
-  //     self.oId = user.objectId;
-    
-      // self.theActualId = results[0].objectId;
-    
-
-    
-    
-    
-    
-//    [query getObjectInBackgroundWithId:@"HL7SrF7OwK" block:^(PFObject *user, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
-//         NSString *objectId = user.objectId;
-//        NSLog(@"Your user: %@", user);
-//        NSLog(@"Your: %@", objectId);
-        
- 
-    
-    
-        
- 
-        
-        
-//    }];
-    
-//    NSString *objectIds = *objectIds;
-//    NSLog(@"Your obj id: %@", objectIds);
-    
-   }
-    
-    
-//    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-//    //NSString *playerName = User[@"playerName"];
-//    
-//    NSString *objectId = _user.objectId;
-//    
-//    [query getObjectInBackgroundWithId:@"HL7SrF7OwK"];
-    
-  // PFObject *profileID = [otherUser valueForKey:@"HL7SrF7OwK"];
-    
-
-  // PFUser *user = @"HL7SrF7OwK";
-   // NSString *objectId = object.objectId;
-//    NSString *objectId = [myObject HL7SrF7OwK];
-    
-//    PFUser *currentUser = [PFUser currentUser];
-    
-    
-
-    
-//    [PFCloud callFunctionInBackground:@"match"
-//                       withParameters:@{@"userID": @""}
-//                                block:^(NSObject *object, NSError *error) {
-//                                    if (!error) {
-//                                        // ratings is 4.5
-//                                        NSLog(@"is it object: %@", object);
-//                                        // avgPoint = object;
-//                                    }
-//                                }];
-    
-    
-    
-
-
-/*- (IBAction)cloudlikeButton:(UIButton *)sender {
-
-//    [PFCloud callFunctionInBackground:@"hello"
-//                   withParameters:@{@"iLike": @"u1mFAQysC2"}
-//     
-//                            block:^(NSArray *iLike, NSError *error) {
-//                                if (!error) {
-//                                    // ratings is 4.5
-//                                    NSArray *check = iLike;
-//                                    NSLog(@"is it check: %@", check);
-//                              }
-//                           }];
-    
-    [PFCloud callFunctionInBackground:@"hello"
-                       withParameters:@{@"objectID": @"u1mFAQysC2"}
-     
-                                block:^(id object, NSError *error) {
-                                    if (!error) {
-                                        // ratings is 4.5
-                                        NSLog(@"is it object: %@", object);
-                                       // avgPoint = object;
-                                    }
-                                }];
-}
-*/
-/*
-- (IBAction)likeButton:(UIButton *)sender {
- //   [self.delegate didPressLike];
- 
-    PFObject *likeActivity = [PFObject objectWithClassName:kActivityClassKey];
-    [likeActivity setObject:kActivityTypeLikeKey forKey:kActivityTypeKey];
-    [likeActivity setObject:[PFUser currentUser] forKey:kActivityFromUserKey];
-    [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-    }];
-
-    
-    
-    
-//    PFQuery *queryForLike = [PFQuery queryWithClassName:kActivityClassKey];
-//    [queryForLike whereKey:kActivityTypeKey equalTo:kActivityTypeLikeKey];
-//    [queryForLike whereKey:kActivityFromUserKey equalTo:[PFUser currentUser]];
-    
-    
-    
-    
-    
-    
-    
-    
-    PFQuery *userLikes = [PFQuery queryWithClassName:@"UserLikes"];
-    
-    [[PFUser currentUser] setObject:@"likes" forKey:@"iLike"];
-    
-    [userLikes setValue:[PFUser currentUser] forKey:@"userID"];
-    
-  //  [userLikes setObject:[PFUser currentUser] forKey:@"userID"];
-    
-    [userLikes whereKey:@"iLike" containedIn:<#(NSArray * __nonnull)#>]
-    
-    [userLikes whereKey:kActivityFromUserKey equalTo:[PFUser currentUser]];
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-  */
-
-
-
-
-
+  }
 
 - (IBAction)dislikeButton:(UIButton *)sender {
-    [self.delegate didPressDislike];
-    /*
-    PFQuery *queryForDislike = [PFQuery queryWithClassName:kActivityClassKey];
-    [queryForDislike whereKey:kActivityTypeKey equalTo:kActivityTypeDislikeKey];
-    [queryForDislike whereKey:kActivityFromUserKey equalTo:[PFUser currentUser]];}
-*/
+    
+    PFObject *selected = self.profileUser;
+    PFUser *current = [PFUser currentUser];
+    
+    // Save here
+    PFObject *Dislike = [PFObject objectWithClassName:@"UserDisLikes"];
+    
+    [Dislike setObject:current forKey:@"userID"];
+    [Dislike setObject:selected forKey:@"disLikedUserID"];
+    
+    [Dislike saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if(succeeded){
+            
+        }else{
+            NSLog(@"failed");
+        }
+    }];
+
 }
+ 
+
 @end

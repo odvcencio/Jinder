@@ -5,6 +5,10 @@
 #import <Parse/Parse.h>
 #import "SettingsViewController.h"
 #import "DelightNewsFeedViewController.h"
+#import <FBSDKCoreKit/FBSDKApplicationDelegate.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "LoginViewController.h"
 
 
 @interface SettingsViewController ()
@@ -41,23 +45,77 @@
     
 }
 
+- (IBAction)selectSettingsBack:(id)sender {
+    NSString * storyboardName = @"StoryboardNewsFeed";
+    NSString * viewControllerID = @"NavBar";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
+    
+}
+
 //-------------------------------------------------------------End Segue
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
+    PFUser *current = [PFUser currentUser];
+    
     self.ageSlider.delegate = self;
     self.ageSlider.minValue = 18;
     self.ageSlider.maxValue = 60;
- 
-    [self ageGetFromParse];
     
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query getObjectInBackgroundWithId:current.objectId block:^(PFObject *user, NSError *error) {
+        // Do something with the returned PFObject in the gameScore variable.
+        int min = [[user objectForKey:@"minAge"] intValue];
+        int max = [[user objectForKey:@"maxAge"] intValue];
+    
+    self.ageSlider.selectedMinimum = min;
+    self.ageSlider.selectedMaximum = max;
+        
+    }];  // End of age range
+    
+ 
+   [self ageGetFromParse]; // Big numbers
+    
+    //-------------------------------------------------------------Split
     
     // segemted
-    self.oldSegmentedIndex = -1;
-    self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
-  
+    PFQuery *query1 = [PFQuery queryWithClassName:@"_User"];
+    [query1 getObjectInBackgroundWithId:current.objectId block:^(PFObject *user1, NSError *error) {
+    
+    BOOL showMeMen = [user1[@"showMeMen"] boolValue];
+    BOOL showMeWomen = [user1[@"showMeWomen"] boolValue];
+    BOOL showMeBoth = [user1[@"showMeBoth"] boolValue];
+        
+        
+        
+        if (showMeMen == TRUE) {
+            
+      //      UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
+         //   NSInteger selectedSegment0 = 0;
+            self.actualSegmentedIndex = 0;
+            _segmentedControl.selectedSegmentIndex = self.actualSegmentedIndex;
+            
+        } else if (showMeWomen == TRUE) {
+            
+            self.actualSegmentedIndex = 1;
+            
+            _segmentedControl.selectedSegmentIndex = self.actualSegmentedIndex;
+            
+        } else if (showMeBoth == TRUE) {
+            
+            self.actualSegmentedIndex = 2;
+            _segmentedControl.selectedSegmentIndex = self.actualSegmentedIndex;
+
+        }
+    
+//    self.oldSegmentedIndex = -1;
+//    self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
+  //  self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
+    }];
 
 
 }
@@ -169,6 +227,23 @@
     self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
     
 }
+
+
+// Log out
+
+- (IBAction)logMeOut:(id)sender {
+    
+  //  [[PFSession activeSession] closeWithCompletionHandler:true];
+    [PFUser logOut];
+   // PFUser *currentUser = [PFUser currentUser];
+    
+    NSString * storyboardName = @"Main";
+    NSString * viewControllerID = @"LoginVC";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    LoginVC * controller = (LoginVC *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 
 
 

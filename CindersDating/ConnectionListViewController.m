@@ -7,6 +7,7 @@
 #import "ConnectionListViewController.h"
 #import "PrivateMessageViewController.h"
 #import "DelightNewsFeedViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ConnectionListViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -16,6 +17,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *labelDescription;
 @property (strong, nonatomic) IBOutlet UILabel *labelName;
+
+@property (strong, nonatomic) UIImageView *imageHolder;
 
 @end
 
@@ -54,6 +57,8 @@
     self.tableView.dataSource = self;
     
    // PFUser *currentUser = [PFUser currentUser];
+    
+    
     
     
     
@@ -116,22 +121,36 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
     PFObject *delightChat = [PFObject objectWithClassName:@"DelightChat"];
     
     delightChat = [self.currentConversations objectAtIndex:indexPath.row];
+  //  PFUser *userAtIndPath = [self.currentConversations objectAtIndex:indexPath.row];
     
     PFUser *likedUser;
     NSString *likedUserName;
+    NSString *userAtIndPathURL;
     PFUser *currentUser = [PFUser currentUser];
     PFUser *testUser1 = delightChat[@"user1"];
     
     if ([testUser1.objectId isEqual:currentUser.objectId]) {  // must compare Parse objects using objectId
         likedUser = [delightChat objectForKey:@"user2"];
         likedUserName = [likedUser objectForKey:@"firstName"];
+        userAtIndPathURL = [likedUser objectForKey:@"picURL"];
         self.chatWithName = likedUserName;
     } else {
         likedUser = [delightChat objectForKey:@"user1"];
         likedUserName = [likedUser objectForKey:@"firstName"];
+        userAtIndPathURL = [likedUser objectForKey:@"picURL"];
     }
     
-    cell.textLabel.text = likedUserName;
+    // testing
+    UILabel *nameLabel = (UILabel*) [cell viewWithTag:200];
+    nameLabel.text = [likedUser objectForKey:@"firstName"];
+    
+    UIImageView *pic = (UIImageView *) [cell viewWithTag:201];
+    
+    [pic sd_setImageWithURL:[NSURL URLWithString:userAtIndPathURL]
+           placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    // Actual working code
+  //  cell.textLabel.text = likedUserName;
     
     
     PFObject *messageRoomKey = [PFObject objectWithClassName:@"dMessage"];
@@ -149,6 +168,39 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
      }];*/
     return cell;
 }
+
+
+#pragma mark - Display a message if you have no items in the inbox
+
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    // Return the number of sections.
+//    if (_currentConversations) {
+//        
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//        return 1;
+//        
+//    } else {
+//        
+//        // Display a message when the table is empty
+//        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+//        
+//        messageLabel.text = @"No data is currently available. Please pull down to refresh.";
+//        messageLabel.textColor = [UIColor blackColor];
+//        messageLabel.numberOfLines = 0;
+//        messageLabel.textAlignment = NSTextAlignmentCenter;
+//        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+//        [messageLabel sizeToFit];
+//        
+//        self.tableView.backgroundView = messageLabel;
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        
+//    }
+//    
+//    return 0;
+//}
+
+
 
 #pragma mark - UITableViewDelegate
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2iy-bH-8dG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SfJ-Ja-e4f">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,18 +14,18 @@
                         <viewControllerLayoutGuide type="bottom" id="BqV-3X-WtI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yco-4k-4Fr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delight-purple-blank.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1TZ-8J-lYm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jin-login.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1TZ-8J-lYm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KmW-oW-QGz">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KmW-oW-QGz">
+                                <rect key="frame" x="149" y="273" width="20" height="20"/>
                                 <color key="color" red="0.60784313729999995" green="0.29411764709999999" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBM-ON-WIS">
-                                <rect key="frame" x="91" y="588" width="192" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBM-ON-WIS">
+                                <rect key="frame" x="63" y="489" width="192" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="192" id="l1s-bl-mqw"/>
                                     <constraint firstAttribute="height" constant="35" id="njB-I2-2rz"/>
@@ -51,7 +51,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v5s-V0-6co"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="activityIndicator" destination="KmW-oW-QGz" id="haC-Kh-QCP"/>
                         <outlet property="loginImage" destination="1TZ-8J-lYm" id="XSd-aJ-z32"/>
@@ -70,11 +70,11 @@
                         <viewControllerLayoutGuide type="bottom" id="IdY-n5-bsf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jo9-yJ-FKx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJy-kC-med">
-                                <rect key="frame" x="16" y="629" width="74" height="30"/>
+                                <rect key="frame" x="16" y="530" width="74" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="lEO-7C-oPd"/>
                                 </constraints>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7EE-So-In8">
-                                <rect key="frame" x="244" y="629" width="125" height="30"/>
+                                <rect key="frame" x="189" y="530" width="125" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="UqL-wd-Has"/>
                                 </constraints>
@@ -101,7 +101,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-WQ-rbE">
-                                <rect key="frame" x="151" y="431" width="97" height="30"/>
+                                <rect key="frame" x="101" y="449" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -114,7 +114,7 @@
                             <constraint firstItem="JJy-kC-med" firstAttribute="baseline" secondItem="7EE-So-In8" secondAttribute="baseline" id="ltB-8P-AHF"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YrE-YB-XjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,7 +124,7 @@
         <scene sceneID="PsC-Ut-iVe">
             <objects>
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="BiE-zh-vEP" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cq2-lw-gFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,11 +139,14 @@
                         <viewControllerLayoutGuide type="bottom" id="rDq-l1-h6Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Oq0-MU-b5H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOM-kI-tfh">
-                                <rect key="frame" x="16" y="20" width="343" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6GD-xX-azJ">
+                                <rect key="frame" x="43" y="84" width="235" height="359"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOM-kI-tfh">
+                                <rect key="frame" x="16" y="50" width="288" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4BY-LF-hwB"/>
                                 </constraints>
@@ -151,22 +154,14 @@
                                 <color key="textColor" red="0.60784313729999995" green="0.29411764709999999" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6GD-xX-azJ">
-                                <rect key="frame" x="31" y="55" width="314" height="515"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6GD-xX-azJ" firstAttribute="leading" secondItem="Oq0-MU-b5H" secondAttribute="leadingMargin" constant="15" id="7ab-LX-r5p"/>
                             <constraint firstItem="mOM-kI-tfh" firstAttribute="trailing" secondItem="Oq0-MU-b5H" secondAttribute="trailingMargin" id="JBg-XX-70C"/>
-                            <constraint firstItem="rDq-l1-h6Z" firstAttribute="top" secondItem="6GD-xX-azJ" secondAttribute="bottom" constant="97" id="KsE-kS-wTb"/>
                             <constraint firstItem="mOM-kI-tfh" firstAttribute="leading" secondItem="Oq0-MU-b5H" secondAttribute="leadingMargin" id="a9A-5G-RxQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6GD-xX-azJ" secondAttribute="trailing" constant="14" id="k9y-p1-d5b"/>
-                            <constraint firstItem="6GD-xX-azJ" firstAttribute="top" secondItem="mOM-kI-tfh" secondAttribute="bottom" constant="14" id="ruy-ln-aeg"/>
-                            <constraint firstItem="mOM-kI-tfh" firstAttribute="top" secondItem="kTx-Hh-NTZ" secondAttribute="bottom" id="tYQ-uP-2uA"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="6GD-xX-azJ" id="CWV-CQ-EYf"/>
                         <outlet property="titleLabel" destination="mOM-kI-tfh" id="4TA-SO-j7l"/>
@@ -178,7 +173,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="delight-purple-blank.jpg" width="762" height="1360"/>
+        <image name="jin-login.jpg" width="762" height="1360"/>
         <image name="loginfb.png" width="416" height="101"/>
     </resources>
 </document>

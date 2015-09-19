@@ -15,12 +15,11 @@
 
 @end
 
-// @class DelightNewsFeedViewController;
 
 @interface ProfileViewController : UIViewController
 
 // Store Obj coming from Matchfeed
-@property (strong, nonatomic) PFObject *profileUser;
+@property (strong, nonatomic) PFUser *profileUser;
 
 @property (weak, nonatomic) id <ProfileViewControllerDelegate> delegate;
 
@@ -40,4 +39,4 @@
 
 
 
-@end
+@end 
