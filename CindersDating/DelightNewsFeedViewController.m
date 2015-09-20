@@ -59,23 +59,23 @@
 
 -(void) returnAllUserFromParseThatMatchCurrentUserPreference1 {
     
-// poPFUser *current = [PFUser currentUser];
+ PFUser *current = [PFUser currentUser];
 
 // cloud function
 [PFCloud callFunctionInBackground:@"matchFeed"
-                   withParameters:nil
-                            block:^(NSObject *objects, NSError *error) {
+                   withParameters:@{@"objectId": current.objectId}
+                            block:^(NSArray *objects, NSError *error) {
                                 if (!error) {
                                     // ratings is 4.5
                                //     if ([objects  isEqual:@"They fucking match"]) {
                                         //  NSLog(@"is it object: %@", total);
                                         
                                         [self.currentMatches removeAllObjects];
-                                        [self.currentMatches addObject:objects];
+                                        [self.currentMatches addObjectsFromArray:objects];
                                         [self.tableView reloadData];
                                     
                             //            NSString *what = @"Go to your inbox and say Hi";
-                                        
+                                     NSLog(@"I have %@", objects);
                       
                                         
                                         
@@ -84,10 +84,10 @@
                                 }
                             }];
 
-
+}
 //------------------------------------------------------------------------------End PFClouf function
 
-}
+
 
 //-------------------------------------------------------------Start query
 /*

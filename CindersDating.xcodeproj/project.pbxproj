@@ -29,6 +29,16 @@
 		170FF2A81BA49B11005FF804 /* delight-purple-blank.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A51BA49B11005FF804 /* delight-purple-blank.jpg */; };
 		170FF2A91BA49B11005FF804 /* loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A61BA49B11005FF804 /* loginfb.png */; };
 		170FF2AC1BA4B491005FF804 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2AB1BA4B491005FF804 /* PageContentViewController.m */; };
+		351690CB1BAE0D1700516AFE /* inbox-jin.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C11BAE0D1700516AFE /* inbox-jin.png */; };
+		351690CC1BAE0D1700516AFE /* jin-app-con-220.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C21BAE0D1700516AFE /* jin-app-con-220.png */; };
+		351690CD1BAE0D1700516AFE /* jin-app-con-320.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C31BAE0D1700516AFE /* jin-app-con-320.png */; };
+		351690CE1BAE0D1700516AFE /* jin-app-con.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C41BAE0D1700516AFE /* jin-app-con.png */; };
+		351690CF1BAE0D1700516AFE /* jin-fb-logo-1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C51BAE0D1700516AFE /* jin-fb-logo-1024x1024.png */; };
+		351690D01BAE0D1700516AFE /* jin-login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 351690C61BAE0D1700516AFE /* jin-login.jpg */; };
+		351690D11BAE0D1700516AFE /* jin-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C71BAE0D1700516AFE /* jin-logo.png */; };
+		351690D21BAE0D1700516AFE /* round-rating-buttons-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C81BAE0D1700516AFE /* round-rating-buttons-green.png */; };
+		351690D31BAE0D1700516AFE /* round-rating-buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C91BAE0D1700516AFE /* round-rating-buttons.png */; };
+		351690D41BAE0D1700516AFE /* settings-jin.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690CA1BAE0D1700516AFE /* settings-jin.png */; };
 		358935A11BA48301000B2E55 /* ConnectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359D1BA48301000B2E55 /* ConnectionListViewController.m */; };
 		358935A21BA48301000B2E55 /* PrivateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3589359F1BA48301000B2E55 /* PrivateMessageViewController.m */; };
 		358935A31BA48301000B2E55 /* StoryboardInteraction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935A01BA48301000B2E55 /* StoryboardInteraction.storyboard */; };
@@ -39,12 +49,6 @@
 		358935B11BA483C2000B2E55 /* StoryboardProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935AE1BA483C2000B2E55 /* StoryboardProfile.storyboard */; };
 		358935B61BA4840E000B2E55 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 358935B41BA4840E000B2E55 /* SettingsViewController.m */; };
 		358935B71BA4840E000B2E55 /* StoryboardSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358935B51BA4840E000B2E55 /* StoryboardSettings.storyboard */; };
-		35CC65CA1BACCD380066EC2D /* jin-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 35CC65C91BACCD380066EC2D /* jin-logo.png */; };
-		35CC65CC1BACCF5E0066EC2D /* inbox-jin.png in Resources */ = {isa = PBXBuildFile; fileRef = 35CC65CB1BACCF5E0066EC2D /* inbox-jin.png */; };
-		35CC65CE1BACD0470066EC2D /* settings-jin.png in Resources */ = {isa = PBXBuildFile; fileRef = 35CC65CD1BACD0470066EC2D /* settings-jin.png */; };
-		35CC65D11BACFCF00066EC2D /* round-rating-buttons-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 35CC65CF1BACFCF00066EC2D /* round-rating-buttons-green.png */; };
-		35CC65D21BACFCF00066EC2D /* round-rating-buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = 35CC65D01BACFCF00066EC2D /* round-rating-buttons.png */; };
-		35E4ED361BAD228F00C3A4AD /* jin-login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 35E4ED351BAD228F00C3A4AD /* jin-login.jpg */; };
 		D067A2E2F332796FBF70E96E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4409CDA5D416BADB4E61BDD6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -89,6 +93,16 @@
 		170FF2A61BA49B11005FF804 /* loginfb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginfb.png; sourceTree = "<group>"; };
 		170FF2AA1BA4B491005FF804 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		170FF2AB1BA4B491005FF804 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		351690C11BAE0D1700516AFE /* inbox-jin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox-jin.png"; sourceTree = "<group>"; };
+		351690C21BAE0D1700516AFE /* jin-app-con-220.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jin-app-con-220.png"; sourceTree = "<group>"; };
+		351690C31BAE0D1700516AFE /* jin-app-con-320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jin-app-con-320.png"; sourceTree = "<group>"; };
+		351690C41BAE0D1700516AFE /* jin-app-con.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jin-app-con.png"; sourceTree = "<group>"; };
+		351690C51BAE0D1700516AFE /* jin-fb-logo-1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jin-fb-logo-1024x1024.png"; sourceTree = "<group>"; };
+		351690C61BAE0D1700516AFE /* jin-login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jin-login.jpg"; sourceTree = "<group>"; };
+		351690C71BAE0D1700516AFE /* jin-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jin-logo.png"; sourceTree = "<group>"; };
+		351690C81BAE0D1700516AFE /* round-rating-buttons-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-rating-buttons-green.png"; sourceTree = "<group>"; };
+		351690C91BAE0D1700516AFE /* round-rating-buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "round-rating-buttons.png"; sourceTree = "<group>"; };
+		351690CA1BAE0D1700516AFE /* settings-jin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-jin.png"; sourceTree = "<group>"; };
 		3589359C1BA48301000B2E55 /* ConnectionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionListViewController.h; sourceTree = "<group>"; };
 		3589359D1BA48301000B2E55 /* ConnectionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionListViewController.m; sourceTree = "<group>"; };
 		3589359E1BA48301000B2E55 /* PrivateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageViewController.h; sourceTree = "<group>"; };
@@ -105,12 +119,6 @@
 		358935B31BA4840E000B2E55 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		358935B41BA4840E000B2E55 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		358935B51BA4840E000B2E55 /* StoryboardSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardSettings.storyboard; sourceTree = "<group>"; };
-		35CC65C91BACCD380066EC2D /* jin-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jin-logo.png"; path = "../../Desktop/jin-logo.png"; sourceTree = "<group>"; };
-		35CC65CB1BACCF5E0066EC2D /* inbox-jin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "inbox-jin.png"; path = "../../Desktop/inbox-jin.png"; sourceTree = "<group>"; };
-		35CC65CD1BACD0470066EC2D /* settings-jin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-jin.png"; path = "../../Desktop/settings-jin.png"; sourceTree = "<group>"; };
-		35CC65CF1BACFCF00066EC2D /* round-rating-buttons-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "round-rating-buttons-green.png"; path = "../../Desktop/round-rating-buttons-green.png"; sourceTree = "<group>"; };
-		35CC65D01BACFCF00066EC2D /* round-rating-buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "round-rating-buttons.png"; path = "../../Desktop/round-rating-buttons.png"; sourceTree = "<group>"; };
-		35E4ED351BAD228F00C3A4AD /* jin-login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "jin-login.jpg"; path = "../../Desktop/jin-login.jpg"; sourceTree = "<group>"; };
 		4409CDA5D416BADB4E61BDD6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED89F12B7751D87B85775AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C066C1E3686F45DB360E6712 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -238,16 +246,20 @@
 		358935B81BA484F3000B2E55 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				35CC65C91BACCD380066EC2D /* jin-logo.png */,
 				170FF2A41BA49B11005FF804 /* chatfeeds.png */,
+				351690C11BAE0D1700516AFE /* inbox-jin.png */,
+				351690C21BAE0D1700516AFE /* jin-app-con-220.png */,
+				351690C31BAE0D1700516AFE /* jin-app-con-320.png */,
+				351690C41BAE0D1700516AFE /* jin-app-con.png */,
+				351690C51BAE0D1700516AFE /* jin-fb-logo-1024x1024.png */,
+				351690C61BAE0D1700516AFE /* jin-login.jpg */,
+				351690C71BAE0D1700516AFE /* jin-logo.png */,
+				351690C81BAE0D1700516AFE /* round-rating-buttons-green.png */,
+				351690C91BAE0D1700516AFE /* round-rating-buttons.png */,
+				351690CA1BAE0D1700516AFE /* settings-jin.png */,
 				170FF2A51BA49B11005FF804 /* delight-purple-blank.jpg */,
-				35CC65CF1BACFCF00066EC2D /* round-rating-buttons-green.png */,
-				35CC65D01BACFCF00066EC2D /* round-rating-buttons.png */,
-				35E4ED351BAD228F00C3A4AD /* jin-login.jpg */,
 				170FF2A61BA49B11005FF804 /* loginfb.png */,
-				35CC65CD1BACD0470066EC2D /* settings-jin.png */,
 				170FF2901BA499BB005FF804 /* interests.png */,
-				35CC65CB1BACCF5E0066EC2D /* inbox-jin.png */,
 				170FF2911BA499BB005FF804 /* invitechat.png */,
 				170FF2921BA499BB005FF804 /* LikeIcon.png */,
 				170FF2931BA499BB005FF804 /* location.png */,
@@ -379,27 +391,31 @@
 				170FF2A01BA499BB005FF804 /* matchfeeds.png in Resources */,
 				170FF29F1BA499BB005FF804 /* map-icon1.png in Resources */,
 				358935B71BA4840E000B2E55 /* StoryboardSettings.storyboard in Resources */,
+				351690CF1BAE0D1700516AFE /* jin-fb-logo-1024x1024.png in Resources */,
 				170FF2A81BA49B11005FF804 /* delight-purple-blank.jpg in Resources */,
+				351690CD1BAE0D1700516AFE /* jin-app-con-320.png in Resources */,
 				170FF2A21BA499BB005FF804 /* UserImage.png in Resources */,
 				358935A31BA48301000B2E55 /* StoryboardInteraction.storyboard in Resources */,
+				351690CE1BAE0D1700516AFE /* jin-app-con.png in Resources */,
+				351690D31BAE0D1700516AFE /* round-rating-buttons.png in Resources */,
 				170FF2A71BA49B11005FF804 /* chatfeeds.png in Resources */,
-				35CC65CA1BACCD380066EC2D /* jin-logo.png in Resources */,
 				170FF29E1BA499BB005FF804 /* map-icon.png in Resources */,
-				35CC65D21BACFCF00066EC2D /* round-rating-buttons.png in Resources */,
 				170FF2A11BA499BB005FF804 /* settings.png in Resources */,
+				351690D01BAE0D1700516AFE /* jin-login.jpg in Resources */,
+				351690D41BAE0D1700516AFE /* settings-jin.png in Resources */,
+				351690D21BAE0D1700516AFE /* round-rating-buttons-green.png in Resources */,
 				170FF29C1BA499BB005FF804 /* LikeIcon.png in Resources */,
-				35E4ED361BAD228F00C3A4AD /* jin-login.jpg in Resources */,
 				358935B11BA483C2000B2E55 /* StoryboardProfile.storyboard in Resources */,
 				358935A91BA48380000B2E55 /* StoryboardNewsFeed.storyboard in Resources */,
+				351690D11BAE0D1700516AFE /* jin-logo.png in Resources */,
 				170FF29D1BA499BB005FF804 /* location.png in Resources */,
-				35CC65D11BACFCF00066EC2D /* round-rating-buttons-green.png in Resources */,
+				351690CC1BAE0D1700516AFE /* jin-app-con-220.png in Resources */,
 				170FF2A31BA499BB005FF804 /* yelp.png in Resources */,
+				351690CB1BAE0D1700516AFE /* inbox-jin.png in Resources */,
 				170FF28C1BA490BB005FF804 /* Main.storyboard in Resources */,
 				170FF29B1BA499BB005FF804 /* invitechat.png in Resources */,
 				170FF25E1BA4722B005FF804 /* Images.xcassets in Resources */,
 				170FF29A1BA499BB005FF804 /* interests.png in Resources */,
-				35CC65CE1BACD0470066EC2D /* settings-jin.png in Resources */,
-				35CC65CC1BACCF5E0066EC2D /* inbox-jin.png in Resources */,
 				170FF2A91BA49B11005FF804 /* loginfb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
