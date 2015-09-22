@@ -21,7 +21,7 @@
 #import "FBSDKCoreKit+Internal.h"
 #import "FBSDKShareConstants.h"
 #import "FBSDKShareError.h"
-#import "FBSDKShareLinkContent.h"
+#import "FBSDKShareLinkContent+Internal.h"
 #import "FBSDKShareOpenGraphContent.h"
 #import "FBSDKShareOpenGraphObject.h"
 #import "FBSDKSharePhoto.h"
@@ -179,7 +179,7 @@
   NSMutableDictionary *parameters = nil;
   if ([content isKindOfClass:[FBSDKShareLinkContent class]]) {
     FBSDKShareLinkContent *linkContent = (FBSDKShareLinkContent *)content;
-    parameters = [[NSMutableDictionary alloc] init];
+    parameters = [[NSMutableDictionary alloc] initWithDictionary:linkContent.feedParameters];
     [FBSDKInternalUtility dictionary:parameters setObject:linkContent.contentDescription forKey:@"description"];
     [FBSDKInternalUtility dictionary:parameters setObject:linkContent.contentURL forKey:@"link"];
     [FBSDKInternalUtility dictionary:parameters setObject:linkContent.contentTitle forKey:@"name"];
@@ -241,7 +241,7 @@
   return ([self _validateRequiredValue:appInviteContent name:@"content" error:errorRef] &&
           [self _validateRequiredValue:appInviteContent.appLinkURL name:@"appLinkURL" error:errorRef] &&
           [self _validateNetworkURL:appInviteContent.appLinkURL name:@"appLinkURL" error:errorRef] &&
-          [self _validateNetworkURL:appInviteContent.previewImageURL name:@"previewImageURL" error:errorRef]);
+          [self _validateNetworkURL:appInviteContent.appInvitePreviewImageURL name:@"appInvitePreviewImageURL" error:errorRef]);
 }
 
 + (BOOL)validateGameRequestContent:(FBSDKGameRequestContent *)gameRequestContent error:(NSError *__autoreleasing *)errorRef
@@ -260,20 +260,20 @@
     }
     return NO;
   }
-  BOOL hasTo = [gameRequestContent.to count] > 0;
+  BOOL hasTo = [gameRequestContent.recipients count] > 0;
   BOOL hasFilters = gameRequestContent.filters != FBSDKGameRequestFilterNone;
-  BOOL hasSuggestions = [gameRequestContent.suggestions count] > 0;
+  BOOL hasSuggestions = [gameRequestContent.recipientSuggestions count] > 0;
   if (hasTo && hasFilters) {
     if (errorRef != NULL) {
       NSString *message = @"Cannot specify to and filters at the same time.";
-      *errorRef = [FBSDKShareError invalidArgumentErrorWithName:@"to" value:gameRequestContent.to message:message];
+      *errorRef = [FBSDKShareError invalidArgumentErrorWithName:@"recipients" value:gameRequestContent.recipients message:message];
     }
     return NO;
   }
   if (hasTo && hasSuggestions) {
     if (errorRef != NULL) {
       NSString *message = @"Cannot specify to and suggestions at the same time.";
-      *errorRef = [FBSDKShareError invalidArgumentErrorWithName:@"to" value:gameRequestContent.to message:message];
+      *errorRef = [FBSDKShareError invalidArgumentErrorWithName:@"recipients" value:gameRequestContent.recipients message:message];
     }
     return NO;
   }
@@ -281,7 +281,7 @@
   if (hasFilters && hasSuggestions) {
     if (errorRef != NULL) {
       NSString *message = @"Cannot specify filters and suggestions at the same time.";
-      *errorRef = [FBSDKShareError invalidArgumentErrorWithName:@"suggestions" value:gameRequestContent.suggestions message:message];
+      *errorRef = [FBSDKShareError invalidArgumentErrorWithName:@"recipientSuggestions" value:gameRequestContent.recipientSuggestions message:message];
     }
     return NO;
   }
@@ -394,9 +394,16 @@
 
 + (void)_addToParameters:(NSMutableDictionary *)parameters forShareContent:(id<FBSDKSharingContent>)shareContent
 {
-  [FBSDKInternalUtility dictionary:parameters setObject:shareContent.peopleIDs forKey:@"tags"];
-  [FBSDKInternalUtility dictionary:parameters setObject:shareContent.placeID forKey:@"place"];
-  [FBSDKInternalUtility dictionary:parameters setObject:shareContent.ref forKey:@"ref"];
+  if ([shareContent isKindOfClass:[FBSDKShareOpenGraphContent class]]) {
+    FBSDKShareOpenGraphAction *action = ((FBSDKShareOpenGraphContent *)shareContent).action;
+    [action setArray:shareContent.peopleIDs forKey:@"tags"];
+    [action setString:shareContent.placeID forKey:@"place"];
+    [action setString:shareContent.ref forKey:@"ref"];
+  } else {
+    [FBSDKInternalUtility dictionary:parameters setObject:shareContent.peopleIDs forKey:@"tags"];
+    [FBSDKInternalUtility dictionary:parameters setObject:shareContent.placeID forKey:@"place"];
+    [FBSDKInternalUtility dictionary:parameters setObject:shareContent.ref forKey:@"ref"];
+  }
 }
 
 + (void)_addToParameters:(NSMutableDictionary *)parameters
@@ -469,6 +476,7 @@ forShareOpenGraphContent:(FBSDKShareOpenGraphContent *)openGraphContent
     // if we have an FBSDKShareOpenGraphObject and a type, then we are creating a new object instance; set the flag
     if ([key isEqualToString:@"og:type"] && [container isKindOfClass:[FBSDKShareOpenGraphObject class]]) {
       dictionary[@"fbsdk:create_object"] = @YES;
+      dictionary[key] = object;
     }
     id value = [self _convertObject:object];
     if (value) {

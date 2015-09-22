@@ -21,14 +21,15 @@
 
 #import "PFLogInViewController.h"
 
-#import <Parse/PFTwitterUtils.h>
+#import <Parse/PFUser.h>
 
 #import "PFActionButton.h"
-#import "PFAlertView.h"
+#import "PFUIAlertView.h"
 #import "PFLocalization.h"
 #import "PFPrimaryButton.h"
 #import "PFSignUpViewController.h"
 #import "PFTextField.h"
+#import "PFLogInView_Private.h"
 
 NSString *const PFLogInSuccessNotification = @"com.parse.ui.login.success";
 NSString *const PFLogInFailureNotification = @"com.parse.ui.login.failure";
@@ -45,6 +46,12 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
 // FBSDKv4
 + (void)logInInBackgroundWithReadPermissions:(NSArray *)permissions block:(PFUserResultBlock)block;
 + (void)logInInBackgroundWithPublishPermissions:(NSArray *)permissions block:(PFUserResultBlock)block;
+
+@end
+
+@protocol WeaklyReferenceTwitterUtils <NSObject>
+
++ (void)logInWithBlock:(PFUserResultBlock)block;
 
 @end
 
@@ -66,8 +73,9 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
 
 @implementation PFLogInViewController
 
-#pragma mark -
-#pragma mark NSObject
+///--------------------------------------
+#pragma mark - Init
+///--------------------------------------
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -100,17 +108,18 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     }
 }
 
-#pragma mark -
-#pragma mark Dealloc
+///--------------------------------------
+#pragma mark - Dealloc
+///--------------------------------------
 
 - (void)dealloc {
     // Unregister from all notifications
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
-#pragma mark -
-#pragma mark UIViewController
+///--------------------------------------
+#pragma mark - UIViewController
+///--------------------------------------
 
 - (void)loadView {
     _logInView = [[PFLogInView alloc] initWithFields:_fields];
@@ -137,10 +146,7 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     }
 }
 
-#pragma mark -
-#pragma mark Rotation
-
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return UIInterfaceOrientationMaskAll;
     }
@@ -148,8 +154,9 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     return UIInterfaceOrientationMaskPortrait;
 }
 
-#pragma mark -
-#pragma mark PFLogInViewController
+///--------------------------------------
+#pragma mark - PFLogInViewController
+///--------------------------------------
 
 - (PFLogInView *)logInView {
     return (PFLogInView *)self.view; // self.view will call loadView if the view is nil
@@ -161,6 +168,17 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
 
 - (BOOL)emailAsUsername {
     return self.logInView.emailAsUsername;
+}
+
+- (void)setFields:(PFLogInFields)fields {
+    if (_fields != fields) {
+        _fields = fields;
+
+        // Avoid force loading logInView
+        if (_logInView) {
+            _logInView.fields = fields;
+        }
+    }
 }
 
 - (void)setDelegate:(id<PFLogInViewControllerDelegate>)delegate {
@@ -179,8 +197,29 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     }
 }
 
-#pragma mark -
-#pragma mark UITextFieldDelegate
+- (PFSignUpViewController *)signUpController {
+    if (!_signUpController) {
+        _signUpController = [[PFSignUpViewController alloc] init];
+        _signUpController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        _signUpController.emailAsUsername = self.emailAsUsername;
+    }
+    return _signUpController;
+}
+
+- (void)setLoading:(BOOL)loading {
+    if (self.loading != loading) {
+        _loading = loading;
+
+        _logInView.usernameField.enabled = !self.loading;
+        _logInView.passwordField.enabled = !self.loading;
+        _logInView.passwordForgottenButton.enabled = !self.loading;
+        _logInView.dismissButton.enabled = !self.loading;
+    }
+}
+
+///--------------------------------------
+#pragma mark - UITextFieldDelegate
+///--------------------------------------
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == _logInView.usernameField) {
@@ -194,8 +233,9 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     return YES;
 }
 
-#pragma mark -
-#pragma mark UIAlertViewDelegate
+///--------------------------------------
+#pragma mark - UIAlertViewDelegate
+///--------------------------------------
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex != [alertView cancelButtonIndex]) {
@@ -204,8 +244,9 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     }
 }
 
-#pragma mark -
-#pragma mark Private
+///--------------------------------------
+#pragma mark - Private
+///--------------------------------------
 
 - (void)setupHandlers {
     [_logInView.dismissButton addTarget:self
@@ -247,7 +288,7 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)_forgotPasswordAction {
+- (void)_forgotPasswordAction PF_EXTENSION_UNAVAILABLE("") {
     NSString *title = NSLocalizedString(@"Reset Password", @"Forgot password request title in PFLogInViewController");
     NSString *message = NSLocalizedString(@"Please enter the email address for your account.",
                                           @"Email request message in PFLogInViewController");
@@ -355,20 +396,26 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     }
     self.loading = YES;
 
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-        self.loading = NO;
-        if ([_logInView.facebookButton isKindOfClass:[PFActionButton class]]) {
-            [(PFActionButton *)_logInView.twitterButton setLoading:NO];
-        }
+    Class twitterUtils = NSClassFromString(@"PFTwitterUtils");
+    if (twitterUtils && [twitterUtils respondsToSelector:@selector(logInWithBlock:)]) {
+        [twitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            self.loading = NO;
+            if ([_logInView.facebookButton isKindOfClass:[PFActionButton class]]) {
+                [(PFActionButton *)_logInView.twitterButton setLoading:NO];
+            }
 
-        if (user) {
-            [self _loginDidSucceedWithUser:user];
-        } else if (error) {
-            [self _loginDidFailWithError:error];
-        } else {
-            // User cancelled login.
-        }
-    }];
+            if (user) {
+                [self _loginDidSucceedWithUser:user];
+            } else if (error) {
+                [self _loginDidFailWithError:error];
+            } else {
+                // User cancelled login.
+            }
+        }];
+    } else {
+        [NSException raise:NSInternalInconsistencyException
+                    format:@"Can't find PFTwitterUtils. Please link with ParseTwitterUtils to enable login with Twitter."];
+    }
 }
 
 #pragma mark Log In
@@ -443,31 +490,9 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
     [[NSNotificationCenter defaultCenter] postNotificationName:PFLogInCancelNotification object:self];
 }
 
-#pragma mark -
-#pragma mark Accessors
-
-- (PFSignUpViewController *)signUpController {
-    if (!_signUpController) {
-        _signUpController = [[PFSignUpViewController alloc] init];
-        _signUpController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        _signUpController.emailAsUsername = self.emailAsUsername;
-    }
-    return _signUpController;
-}
-
-- (void)setLoading:(BOOL)loading {
-    if (self.loading != loading) {
-        _loading = loading;
-
-        _logInView.usernameField.enabled = !self.loading;
-        _logInView.passwordField.enabled = !self.loading;
-        _logInView.passwordForgottenButton.enabled = !self.loading;
-        _logInView.dismissButton.enabled = !self.loading;
-    }
-}
-
-#pragma mark -
-#pragma mark Keyboard
+///--------------------------------------
+#pragma mark - Keyboard
+///--------------------------------------
 
 - (UIView *)currentFirstResponder {
     if ([_logInView.usernameField isFirstResponder]) {
@@ -490,7 +515,8 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 - (void)_keyboardWillShow:(NSNotification *)notification {
@@ -566,8 +592,7 @@ NSString *const PFLogInCancelNotification = @"com.parse.ui.login.cancel";
             return; // No scrolling required
         }
 
-        contentOffset = CGPointMake(0.0f, MIN(offsetForScrollingTextFieldToTop,
-                                              offsetForScrollingLowestViewToBottom));
+        contentOffset = CGPointMake(0.0f, MIN(offsetForScrollingTextFieldToTop, offsetForScrollingLowestViewToBottom));
     }
 
     [_logInView setContentOffset:contentOffset animated:animated];

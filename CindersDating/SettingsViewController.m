@@ -149,7 +149,7 @@
     if (current) {
         // do stuff with the user
          PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-         [query getObjectInBackgroundWithId:@"ud7EMc6wVR" block:^(PFObject *user, NSError *error) {
+         [query getObjectInBackgroundWithId:current.objectId block:^(PFObject *user, NSError *error) {
             // Do something with the returned PFObject in the gameScore variable.
            int min = [[user objectForKey:@"minAge"] intValue];
            int max = [[user objectForKey:@"maxAge"] intValue];

@@ -218,7 +218,7 @@ static FBSDKWebDialog *g_currentDialog = nil;
 {
   NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
   parameters[@"display"] = @"touch";
-  parameters[@"sdk"] = [FBSDKSettings sdkVersion];
+  parameters[@"sdk"] = [NSString stringWithFormat:@"ios-%@", [FBSDKSettings sdkVersion]];
   parameters[@"redirect_uri"] = @"fbconnect://success";
   [FBSDKInternalUtility dictionary:parameters setObject:[FBSDKSettings appID] forKey:@"app_id"];
   [FBSDKInternalUtility dictionary:parameters
@@ -280,21 +280,44 @@ static FBSDKWebDialog *g_currentDialog = nil;
   return CGAffineTransformIdentity;
 }
 
+- (CGRect)_applicationFrameForOrientation
+{
+  CGRect applicationFrame = _dialogView.window.screen.applicationFrame;
+  if ([FBSDKInternalUtility shouldManuallyAdjustOrientation]) {
+    switch ([UIApplication sharedApplication].statusBarOrientation) {
+      case UIInterfaceOrientationLandscapeLeft:
+      case UIInterfaceOrientationLandscapeRight:
+        return CGRectMake(0, 0, CGRectGetHeight(applicationFrame), CGRectGetWidth(applicationFrame));
+      case UIInterfaceOrientationPortraitUpsideDown:
+      case UIInterfaceOrientationPortrait:
+      case UIInterfaceOrientationUnknown:
+        return applicationFrame;
+    }
+  } else {
+    return applicationFrame;
+  }
+}
+
 - (void)_updateViewsWithScale:(CGFloat)scale
                         alpha:(CGFloat)alpha
             animationDuration:(CFTimeInterval)animationDuration
                    completion:(void(^)(BOOL finished))completion
 {
   CGAffineTransform transform;
+  CGRect applicationFrame = [self _applicationFrameForOrientation];
   if (scale == 1.0) {
     transform = _dialogView.transform;
     _dialogView.transform = CGAffineTransformIdentity;
-    _dialogView.frame = _dialogView.window.screen.applicationFrame;
+    _dialogView.frame = applicationFrame;
     _dialogView.transform = transform;
   }
   transform = CGAffineTransformScale([self _transformForOrientation], scale, scale);
   void(^updateBlock)(void) = ^{
     _dialogView.transform = transform;
+
+    CGRect mainFrame = _dialogView.window.screen.applicationFrame;
+    _dialogView.center = CGPointMake(CGRectGetMidX(mainFrame),
+                                     CGRectGetMidY(mainFrame));
     _backgroundView.alpha = alpha;
   };
   if (animationDuration == 0.0) {

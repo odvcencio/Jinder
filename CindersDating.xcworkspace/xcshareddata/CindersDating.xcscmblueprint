@@ -1,0 +1,22 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E5DB2ADBE90B023E1ED1A1F0BF267479EEBA8054" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "15990EAA-1B7D-499B-9600-0E6F9A3509A2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E5DB2ADBE90B023E1ED1A1F0BF267479EEBA8054" : "cindersdatingapp"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CindersDating",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CindersDating.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/appteampros\/cindersdatingapp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E5DB2ADBE90B023E1ED1A1F0BF267479EEBA8054"
+    }
+  ]
+}

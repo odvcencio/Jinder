@@ -43,16 +43,10 @@
     self.activityIndicator.hidden = YES;
     //this is different
     
+    
 }
 
 -(void) segueToMatchFeed{
-//    NSString * storyboardName = @"StoryboardNewsFeed";
-//    NSString * viewControllerID = @"MatchFeedViewController";
-//    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-//    
-//    DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
-//    [self presentViewController:controller animated:YES completion:nil];
-    
     
     // Segue to settings for testing purposes
     
@@ -70,17 +64,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)userLinkFacebookCheck{
+    PFUser *current = [PFUser currentUser];
+    
+    if ([PFFacebookUtils isLinkedWithUser:current]) {
+        [self updateUserInformation];
+        [self segueToMatchFeed];
+    }
+}
 
 
 - (void)viewDidAppear:(BOOL)animated {
-    
-  //  PFUser *current = [PFUser currentUser];
-    
-    // testing
-    
-   // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
-        //[self performSegueWithIdentifier:@"segueToProfile" sender:self];
-        }
+    [self userLinkFacebookCheck];
+    [self updateUserInformation];
+    }
 
 
 
@@ -89,7 +86,7 @@
     [self.activityIndicator startAnimating];
     
     
-    NSArray *permissionsArray = @[@"public_profile", @"email", @"user_birthday", @"user_friends", @"user_likes"];
+    NSArray *permissionsArray = @[@"public_profile", @"email", @"user_birthday", @"user_friends"];
     
     //login pfuser
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error)
