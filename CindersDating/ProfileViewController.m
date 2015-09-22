@@ -10,7 +10,6 @@
 #import <FBSDKCoreKit/FBSDKApplicationDelegate.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-//#import "DelightMatchApp/SDWebImage/UIImageView+WebCache.h"
 #import "LoginViewController.h"
 #import "DelightNewsFeedViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -36,21 +35,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 
 if (self.profileUser) {
     
-    
- //   PFObject *userAtIndPath = self.profileUser;
-    
     PFUser *userAtIndPath = self.profileUser;
-    
- //   self.profileUser = userAtIndPath.objectId;
-    
     NSString *userAtIndPathName;
     NSString *userAtIndPathURL;
     
@@ -62,7 +53,6 @@ if (self.profileUser) {
     [self.imageHolder sd_setImageWithURL:[NSURL URLWithString:userAtIndPathURL]
                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                 //
                              }];
     
     
@@ -74,12 +64,8 @@ if (self.profileUser) {
     
     
     self.nameLabel.text = [NSString stringWithFormat:userAtIndPathName];
-            
-
-    
-  }  // if statement
-    
-}  // viewdidload
+  }
+}
 
 
 
@@ -113,23 +99,14 @@ DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[s
 
 #pragma mark- IB Actions 
 
-//u1mFAQysC2
-
 - (IBAction)likeButton:(UIButton *)sender {
     
-
-    
-    PFObject *selected = self.profileUser;
     PFUser *current = [PFUser currentUser];
-    
-
-    
     // Save here
     PFObject *likes = [PFObject objectWithClassName:@"UserLikes"];
     
     [likes setObject:current forKey:@"userID"];
-    [likes setObject:selected forKey:@"userLiked"];
-    
+    [likes setObject:self.profileUser forKey:@"userLiked"];
     
     [likes saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if(succeeded){
@@ -139,33 +116,23 @@ DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[s
         }
     }];
     
-    
-    
     // Check for matches
 
-      NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     
+        NSString *objectID = self.profileUser[@"objectId"];
     
-    
-        [dic setObject:selected.objectId forKey:@"userID"];
-    
-        NSLog(@"the obj: %@", dic);
-    
+        [dic setObject:objectID forKey:@"userID"];
     
         // cloud function
         [PFCloud callFunctionInBackground:@"match"
-                           withParameters:dic     //   @{@"userIDD": @"HL7SrF70wK"}
+                           withParameters:dic
                                     block:^(NSString *total, NSError *error) {
                                         if (!error) {
-                                            // ratings is 4.5
                                             if ([total  isEqual:@"They fucking match"]) {
-                                              //  NSLog(@"is it object: %@", total);
-                                                
                                                 NSString *what = @"Go to your inbox and say Hi";
                                                 
                                                 self.match.text = what;
-                                                
-                                                
                                             }
                 
                                         }
@@ -174,7 +141,7 @@ DelightNewsFeedViewController * controller = (DelightNewsFeedViewController *)[s
 
 - (IBAction)dislikeButton:(UIButton *)sender {
     
-    PFObject *selected = self.profileUser;
+    PFUser *selected = self.profileUser;
     PFUser *current = [PFUser currentUser];
     
     // Save here

@@ -14,7 +14,5 @@
 
 @property (strong, nonatomic) NSString* chatWithName;
 
-- (id)initWith:(NSString *)groupId_;
-
 
 @end

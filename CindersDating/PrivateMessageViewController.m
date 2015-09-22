@@ -12,7 +12,6 @@
     NSTimer *timer;
     BOOL isLoading;
     BOOL initialized;
-    NSString *groupId;
     NSDate *date;
     
     NSMutableArray *users;
@@ -27,15 +26,7 @@
 
 @implementation PrivateMessageViewController
 
-
-//-------------------------------------------------------------Segue
-
-// Not working
-//- (IBAction)doneButton:(id)sender {
-//    
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
+//settings segue
 - (IBAction)selectSettings:(id)sender {
     NSString * storyboardName = @"StoryboardInteraction";
     NSString * viewControllerID = @"navBar";
@@ -44,19 +35,7 @@
     [self presentViewController:controller animated:YES completion:nil];
     
 }
-
-//-------------------------------------------------------------End Segue
-
-
-
-
--(id) initWith:(NSString *)groupId_ {
-        self = [super init];
-        groupId = groupId_;
-        return self;
-}
-
-
+//set up the chat
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -87,15 +66,14 @@
     self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
     self.inputToolbar.maximumHeight = 150;
-    // Do any additional setup after loading the view.
     
-    
-    self.navigationItem.hidesBackButton = NO;  // changes are here ;;
+    self.navigationItem.hidesBackButton = NO;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
 
 }
 
+//set timer for reload after view appears
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -104,7 +82,7 @@
     
 }
 
-
+//turn off timer before leaving view
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -113,6 +91,7 @@
 
 #pragma mark- parse methods
 
+//load up the messages using parse query
 -(void)loadMessages{
     if(isLoading == NO){
         isLoading = YES;
@@ -162,14 +141,18 @@
     }
 }
 
+//after chat messages finish loading scroll to new message\\not implemented: chat sounds
+
 - (void) doneLoading {
     //if (initialized && incoming){
     //[JSQSystemSoundPlayer jsq_playMessageReceivedSound];
     //}
     [self finishReceivingMessage];
-    [self scrollToBottomAnimated:NO];
+    [self scrollToBottomAnimated:YES];
         
 }
+
+//add messages to chat view, iterate over parse chat objects
 
 - (JSQMessage *)addMessage:(PFObject *)object{
     JSQMessage *message;
@@ -191,6 +174,8 @@
     
     return message;
 }
+
+//send button functionality, adding messages to Parse
 
 - (void)sendMessage:(NSString *)text{
     PFUser *currentUser = [PFUser currentUser];
@@ -218,11 +203,14 @@
 
 #pragma mark- JSQMessages method override
 
+//avatar data (currently no avatars)
+
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
     {
         return avatarImageBlank;
     }
 
+//send button function
 - (void)didPressSendButton:(UIButton *)button
            withMessageText:(NSString *)text
                   senderId:(NSString *)senderId
@@ -235,9 +223,12 @@
 
 #pragma mark JSQMessages CollectionView Data Source
 
+//collection view data source, ordering chat messages
+
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath{
     return messages[indexPath.item];
 }
+//collection view data source, differentiating between sent and received
 
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView
              messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -249,7 +240,7 @@
     
 }
 
-
+//collection view data source, display a timestamp for every third message sent
 
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.item % 3 == 0)
@@ -258,8 +249,10 @@
         return [[JSQMessagesTimestampFormatter sharedFormatter] attributedTimestampForDate:message.date];
     }
     else return nil;
-    
 }
+
+//if incoming messages and messages are greater than 1, display name above message
+
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath{
     
     JSQMessage *message = messages[indexPath.item];
@@ -278,6 +271,8 @@
     else return nil;
 }
 
+//display nothing below message
+
 - (NSAttributedString *)collectionView:(JSQMessagesCollectionView *)collectionView attributedTextForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath{
     
     return nil;
@@ -285,9 +280,13 @@
 
 #pragma mark - UICollectionView DataSource
 
+//collection view data source returns number of messages to display
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return [messages count];
 }
+
+//determine each cell's text color dependent on sender
 
 - (UICollectionViewCell *)collectionView:(JSQMessagesCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
@@ -308,6 +307,7 @@
 
 #pragma mark - JSQMessages collection view flow layout delegate
 
+//cell difference for every three messages
 
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath{
@@ -318,6 +318,8 @@
     else return 0;
     
 }
+
+//cell height difference dependent on sender
 
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath{
@@ -338,6 +340,8 @@
     
 }
 
+//no text displayed
+
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath{
     return 0;
@@ -346,10 +350,14 @@
 
 #pragma mark - Responding to collection view tap events
 
+//load earlier messages, no functionality yet
+
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender{
     NSLog(@"didTapLoadEarlierMessagesButton");
 }
+
+//tap avatar, no functionality yet
 
 /*- (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapAvatarImageView:(UIImageView *)avatarImageView
            atIndexPath:(NSIndexPath *)indexPath{
@@ -358,11 +366,15 @@
   {
     }
 }
-
+ 
+//tap messages, no functionality yet
+ 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath{
     JSQMessage *message = messages[indexPath.item];
 }
 
+//tap cell, no functionality yet
+ 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation{
     NSLog(@"didTapCellAtIndexPath %@", NSStringFromCGPoint(touchLocation));
     
@@ -375,10 +387,13 @@
 
 
 #pragma mark - Helper Function
+//boolean value for incoming
+
 - (BOOL)incoming:(JSQMessage *)message{
     return ([message.senderId isEqualToString:self.senderId] == NO);
-    
 }
+//boolean value for outgoing
+
 - (BOOL)outgoing:(JSQMessage *)message{
     return ([message.senderId isEqualToString:self.senderId] == YES);
     

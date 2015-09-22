@@ -23,8 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *minLabel;
 @property (weak, nonatomic) IBOutlet UILabel *maxLabel;
 
-
-// segemted
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (nonatomic, assign) NSInteger oldSegmentedIndex;
@@ -33,8 +31,6 @@
 @end
 
 @implementation SettingsViewController
-
-//-------------------------------------------------------------Segue
 
 - (IBAction)selectSettings:(id)sender {
     NSString * storyboardName = @"StoryboardNewsFeed";
@@ -54,11 +50,15 @@
     
 }
 
-//-------------------------------------------------------------End Segue
-
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
+    [self handleAgeDisplay];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+}
+
+-(void)handleAgeDisplay{
     
     PFUser *current = [PFUser currentUser];
     
@@ -68,64 +68,46 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     [query getObjectInBackgroundWithId:current.objectId block:^(PFObject *user, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
         int min = [[user objectForKey:@"minAge"] intValue];
         int max = [[user objectForKey:@"maxAge"] intValue];
-    
-    self.ageSlider.selectedMinimum = min;
-    self.ageSlider.selectedMaximum = max;
         
-    }];  // End of age range
+        self.ageSlider.selectedMinimum = min;
+        self.ageSlider.selectedMaximum = max;
+        
+    }];
     
- 
-   [self ageGetFromParse]; // Big numbers
     
-    //-------------------------------------------------------------Split
+    [self ageGetFromParse];
     
-    // segemted
     PFQuery *query1 = [PFQuery queryWithClassName:@"_User"];
     [query1 getObjectInBackgroundWithId:current.objectId block:^(PFObject *user1, NSError *error) {
-    
-    BOOL showMeMen = [user1[@"showMeMen"] boolValue];
-    BOOL showMeWomen = [user1[@"showMeWomen"] boolValue];
-    BOOL showMeBoth = [user1[@"showMeBoth"] boolValue];
+        
+        BOOL showMeMen = [user1[@"showMeMen"] boolValue];
+        BOOL showMeWomen = [user1[@"showMeWomen"] boolValue];
+        BOOL showMeBoth = [user1[@"showMeBoth"] boolValue];
         
         
         
         if (showMeMen == TRUE) {
-            
-      //      UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
-         //   NSInteger selectedSegment0 = 0;
             self.actualSegmentedIndex = 0;
             _segmentedControl.selectedSegmentIndex = self.actualSegmentedIndex;
             
         } else if (showMeWomen == TRUE) {
-            
             self.actualSegmentedIndex = 1;
-            
             _segmentedControl.selectedSegmentIndex = self.actualSegmentedIndex;
             
         } else if (showMeBoth == TRUE) {
-            
             self.actualSegmentedIndex = 2;
             _segmentedControl.selectedSegmentIndex = self.actualSegmentedIndex;
-
+            
         }
-    
-//    self.oldSegmentedIndex = -1;
-//    self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
-  //  self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
     }];
-
-
 }
-
 
 -(void)rangeSlider:(TTRangeSlider *)sender didChangeSelectedMinimumValue:(float)selectedMinimum andMaximumValue:(float)selectedMaximum {
     if (sender == self.ageSlider){
-        NSLog(@"Standard slider updated. Min Value: %.0f Max Value: %.0f", selectedMinimum, selectedMaximum);
-       _minAge = [NSNumber numberWithInt: selectedMinimum];
-       _maxAge = [NSNumber numberWithInt: selectedMaximum];
+        _minAge = [NSNumber numberWithInt: selectedMinimum];
+        _maxAge = [NSNumber numberWithInt: selectedMaximum];
         [self ageSetToParse];
         
     }
@@ -147,10 +129,8 @@
    PFUser *current = [PFUser currentUser];
     
     if (current) {
-        // do stuff with the user
          PFQuery *query = [PFQuery queryWithClassName:@"_User"];
          [query getObjectInBackgroundWithId:current.objectId block:^(PFObject *user, NSError *error) {
-            // Do something with the returned PFObject in the gameScore variable.
            int min = [[user objectForKey:@"minAge"] intValue];
            int max = [[user objectForKey:@"maxAge"] intValue];
              
@@ -161,11 +141,6 @@
              self.minLabel.text = strFromInt1;
              self.maxLabel.text = strFromInt2;
             
-            
-            NSLog(@"%@", user);
-            
-            NSLog(@"%@", strFromInt1);
-            NSLog(@"%@", strFromInt2);
             
         }];
     } else {
@@ -221,8 +196,6 @@
         
     }
     
-    
-    // segmented
     self.oldSegmentedIndex = self.actualSegmentedIndex;
     self.actualSegmentedIndex = self.segmentedControl.selectedSegmentIndex;
     
@@ -232,10 +205,8 @@
 // Log out
 
 - (IBAction)logMeOut:(id)sender {
-    
-  //  [[PFSession activeSession] closeWithCompletionHandler:true];
     [PFUser logOut];
-   // PFUser *currentUser = [PFUser currentUser];
+
     
     NSString * storyboardName = @"Main";
     NSString * viewControllerID = @"LoginVC";
@@ -243,34 +214,5 @@
     LoginVC * controller = (LoginVC *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
     [self presentViewController:controller animated:YES completion:nil];
 }
-
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark - Parse Data
-
-// Look at rough draft
-
-
-#pragma mark - Helper Function
-
-
-
-
-
-
-
-
-
 
 @end

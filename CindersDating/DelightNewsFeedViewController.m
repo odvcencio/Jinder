@@ -15,13 +15,13 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *currentMatches;
 @property (weak, nonatomic) IBOutlet UILabel *Label;
-// image view
+
 @property (strong, nonatomic) UIImageView *imageHolder;
 @end
 
 @implementation DelightNewsFeedViewController
 
-//-------------------------------------------------------------Segue
+//segue to settings
 
 - (IBAction)selectSettings:(id)sender {
     NSString * storyboardName = @"StoryboardSettings";
@@ -31,6 +31,9 @@
     [self presentViewController:controller animated:YES completion:nil];
     
 }
+
+//segue to inbox
+
 - (IBAction)connectionsButton:(id)sender {
     NSString * storyboardName = @"StoryboardInteraction";
     NSString * viewControllerID = @"navBar";
@@ -39,10 +42,8 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
-//-------------------------------------------------------------End Segue
+//alloc init array to hold potential matches
 
-//-------------------------------------------------------------Array
-    
 - (NSMutableArray *)currentMatches
 {
     if (!_currentMatches) {
@@ -52,83 +53,41 @@
     
 }
 
-//-------------------------------------------------------------End Array
-
-
-//------------------------------------------------------------------------------Start PFClouf function
+//query cloud for all users that fit parameters
 
 -(void) returnAllUserFromParseThatMatchCurrentUserPreference1 {
     
  PFUser *current = [PFUser currentUser];
 
-// cloud function
 [PFCloud callFunctionInBackground:@"matchFeed"
                    withParameters:@{@"objectId": current.objectId}
                             block:^(NSArray *objects, NSError *error) {
                                 if (!error) {
-                                    // ratings is 4.5
-                               //     if ([objects  isEqual:@"They fucking match"]) {
-                                        //  NSLog(@"is it object: %@", total);
-                                        
                                         [self.currentMatches removeAllObjects];
                                         [self.currentMatches addObjectsFromArray:objects];
                                         [self.tableView reloadData];
-                                    
-                            //            NSString *what = @"Go to your inbox and say Hi";
-                                     NSLog(@"I have %@", objects);
-                      
-                                        
-                                        
-                               //     }
                                     
                                 }
                             }];
 
 }
-//------------------------------------------------------------------------------End PFClouf function
 
-
-
-//-------------------------------------------------------------Start query
-/*
--(void) returnAllUserFromParseThatMatchCurrentUserPreference {
-    
-  //  PFUser *currentUser = [PFUser currentUser];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query whereKey:@"gender" equalTo:@"male"];
-    
-   // [query orderByDescending:@"createdAt"];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            [self.currentMatches removeAllObjects];
-            [self.currentMatches addObjectsFromArray:objects];
-            [self.tableView reloadData];
-            
-        }
-    }];
-
-}
-*/
-//-------------------------------------------------------------End query
+//call cloud query
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     [self returnAllUserFromParseThatMatchCurrentUserPreference1];
     
-    // Adjust tableview
-    
     [self.tableView setContentInset:UIEdgeInsetsMake(0, -20, 0, 0)];
     
 }
 
+//count of potential matches
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -136,6 +95,7 @@
 }
 
 
+//table view cells
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -145,8 +105,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     PFUser *userAtIndPath = [self.currentMatches objectAtIndex:indexPath.row];
-    
-    NSLog(@"%@", userAtIndPath);
     
     NSString *userAtIndPathName;
     NSString *userAtIndPathURL;
@@ -162,13 +120,10 @@
     
     UILabel *ageLabel = (UILabel*) [cell viewWithTag:102];
     
-   // ageLabel.text = [userAtIndPath objectForKey:@"age"];
-    
     int age = [[userAtIndPath objectForKey:@"age"] intValue];
     NSString *strFromInt1 = [NSString stringWithFormat:@"%d", age];
     ageLabel.text = strFromInt1;
-    
-  //
+
     
     // Configure the cell
     UIImageView *pic = (UIImageView *) [cell viewWithTag:101];
@@ -183,34 +138,25 @@
 
 
 
+//segue to profile from match feed
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"goToProfile" sender:indexPath];
-    
-    
 }
 
+//segue at cell
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Make sure your segue name in storyboard is the same as this line
     if ([[segue identifier] isEqualToString:@"goToProfile"])
     {
-        
-        
-        
         ProfileViewController *profileVC = [segue destinationViewController];
         NSIndexPath *indexPath = sender; 
         profileVC.profileUser = [self.currentMatches objectAtIndex:indexPath.row];
-        
-
-        
+ 
     }
-
-    
-    
 }
 
 

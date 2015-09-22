@@ -77,13 +77,14 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
 
 #pragma mark - UITableView touch method
 
-//
+//tap cell to segue to that private messaging
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
     PrivateMessageViewController *dchatVC = [segue destinationViewController];
     NSIndexPath *indexPath = sender;
     dchatVC.delightChat = [self.currentConversations objectAtIndex:indexPath.row];
+
 }
 
 
@@ -96,6 +97,8 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
     return [self.currentConversations count];
 }
 
+//cell for each match room loaded from parse
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -104,15 +107,15 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
     PFObject *delightChat = [PFObject objectWithClassName:@"DelightChat"];
     
     delightChat = [self.currentConversations objectAtIndex:indexPath.row];
-  //  PFUser *userAtIndPath = [self.currentConversations objectAtIndex:indexPath.row];
-    
+  
     PFUser *likedUser;
     NSString *likedUserName;
     NSString *userAtIndPathURL;
     PFUser *currentUser = [PFUser currentUser];
     PFUser *testUser1 = delightChat[@"user1"];
     
-    if ([testUser1.objectId isEqual:currentUser.objectId]) {  // must compare Parse objects using objectId
+    if ([testUser1.objectId isEqual:currentUser.objectId]) {
+        // must compare Parse objects using objectId
         likedUser = [delightChat objectForKey:@"user2"];
         likedUserName = [likedUser objectForKey:@"firstName"];
         userAtIndPathURL = [likedUser objectForKey:@"picURL"];
@@ -132,9 +135,6 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
     [pic sd_setImageWithURL:[NSURL URLWithString:userAtIndPathURL]
            placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     
-    // Actual working code
-  //  cell.textLabel.text = likedUserName;
-    
     
     PFObject *messageRoomKey = [PFObject objectWithClassName:@"dMessage"];
     
@@ -142,50 +142,20 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
     
     
     [delightChat saveInBackground];
-    
-    /*    PFQuery *queryForPhoto = [[PFQuery alloc] initWithClassName:@"Photo"];
-     [queryForPhoto whereKey:@"user" equalTo:likedUser];
-     [queryForPhoto findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-     if ([objects count] > 0){
-     }
-     }];*/
+
     return cell;
 }
 
 
 #pragma mark - Display a message if you have no items in the inbox
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    // Return the number of sections.
-//    if (_currentConversations) {
-//        
-//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//        return 1;
-//        
-//    } else {
-//        
-//        // Display a message when the table is empty
-//        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-//        
-//        messageLabel.text = @"No data is currently available. Please pull down to refresh.";
-//        messageLabel.textColor = [UIColor blackColor];
-//        messageLabel.numberOfLines = 0;
-//        messageLabel.textAlignment = NSTextAlignmentCenter;
-//        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
-//        [messageLabel sizeToFit];
-//        
-//        self.tableView.backgroundView = messageLabel;
-//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//        
-//    }
-//    
-//    return 0;
-//}
+//still in progress
 
 
 
 #pragma mark - UITableViewDelegate
+
+//segue to chat from inbox
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -195,6 +165,7 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
     
 }
 
+//query for chats, add them to array
 
 -(void) refreshCurrentConversations{
     
