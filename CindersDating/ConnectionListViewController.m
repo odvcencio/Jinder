@@ -25,9 +25,9 @@
 @implementation ConnectionListViewController
 
 
-//-------------------------------------------------------------Segue
 
 
+//settings segue
 - (IBAction)selectSettings:(id)sender {
     NSString * storyboardName = @"StoryboardNewsFeed";
     NSString * viewControllerID = @"NavBar";
@@ -38,9 +38,7 @@
 }
 
 
-//-------------------------------------------------------------End Segue
-
-
+//alloc init array of match objects
 - (NSMutableArray *)currentConversations
 {
     if (!_currentConversations) {
@@ -49,31 +47,18 @@
     return _currentConversations;
 }
 
+
+//load the conversations
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-   // PFUser *currentUser = [PFUser currentUser];
-    
-    
-    
-    
-    
-   
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Match Feed" style:UIBarButtonItemStyleDone target:self action:@selector(handleBack: ) ];
-//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-//     self.navigationItem.backBarButtonItem.title = @"Matches";
-    
-
-    
     [self refreshCurrentConversations];
-    
-    
 }
 
+//back to match feed
 -(void)handleBack:(id)sender{
 NSString * storyboardName = @"StoryboardProfile";
 NSString * viewControllerID = @"DelightNewsFeedViewController";
@@ -84,17 +69,15 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
 }
 
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 
-#pragma mark - Navigation Match Feed Example
+#pragma mark - UITableView touch method
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+//
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

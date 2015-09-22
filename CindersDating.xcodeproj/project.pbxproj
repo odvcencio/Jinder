@@ -14,7 +14,6 @@
 		170FF26D1BA4722B005FF804 /* CindersDatingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF26C1BA4722B005FF804 /* CindersDatingTests.m */; };
 		170FF28B1BA490BB005FF804 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2851BA490BB005FF804 /* LoginViewController.m */; };
 		170FF28C1BA490BB005FF804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2861BA490BB005FF804 /* Main.storyboard */; };
-		170FF28E1BA490BB005FF804 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF28A1BA490BB005FF804 /* ViewController.m */; };
 		170FF29A1BA499BB005FF804 /* interests.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2901BA499BB005FF804 /* interests.png */; };
 		170FF29B1BA499BB005FF804 /* invitechat.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2911BA499BB005FF804 /* invitechat.png */; };
 		170FF29C1BA499BB005FF804 /* LikeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2921BA499BB005FF804 /* LikeIcon.png */; };
@@ -28,7 +27,6 @@
 		170FF2A71BA49B11005FF804 /* chatfeeds.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A41BA49B11005FF804 /* chatfeeds.png */; };
 		170FF2A81BA49B11005FF804 /* delight-purple-blank.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A51BA49B11005FF804 /* delight-purple-blank.jpg */; };
 		170FF2A91BA49B11005FF804 /* loginfb.png in Resources */ = {isa = PBXBuildFile; fileRef = 170FF2A61BA49B11005FF804 /* loginfb.png */; };
-		170FF2AC1BA4B491005FF804 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170FF2AB1BA4B491005FF804 /* PageContentViewController.m */; };
 		351690CB1BAE0D1700516AFE /* inbox-jin.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C11BAE0D1700516AFE /* inbox-jin.png */; };
 		351690CC1BAE0D1700516AFE /* jin-app-con-220.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C21BAE0D1700516AFE /* jin-app-con-220.png */; };
 		351690CD1BAE0D1700516AFE /* jin-app-con-320.png in Resources */ = {isa = PBXBuildFile; fileRef = 351690C31BAE0D1700516AFE /* jin-app-con-320.png */; };
@@ -76,8 +74,6 @@
 		170FF2841BA490BB005FF804 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		170FF2851BA490BB005FF804 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		170FF2861BA490BB005FF804 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		170FF2891BA490BB005FF804 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		170FF28A1BA490BB005FF804 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		170FF2901BA499BB005FF804 /* interests.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interests.png; sourceTree = "<group>"; };
 		170FF2911BA499BB005FF804 /* invitechat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invitechat.png; sourceTree = "<group>"; };
 		170FF2921BA499BB005FF804 /* LikeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LikeIcon.png; sourceTree = "<group>"; };
@@ -91,8 +87,6 @@
 		170FF2A41BA49B11005FF804 /* chatfeeds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatfeeds.png; sourceTree = "<group>"; };
 		170FF2A51BA49B11005FF804 /* delight-purple-blank.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "delight-purple-blank.jpg"; sourceTree = "<group>"; };
 		170FF2A61BA49B11005FF804 /* loginfb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginfb.png; sourceTree = "<group>"; };
-		170FF2AA1BA4B491005FF804 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
-		170FF2AB1BA4B491005FF804 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		351690C11BAE0D1700516AFE /* inbox-jin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox-jin.png"; sourceTree = "<group>"; };
 		351690C21BAE0D1700516AFE /* jin-app-con-220.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jin-app-con-220.png"; sourceTree = "<group>"; };
 		351690C31BAE0D1700516AFE /* jin-app-con-320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jin-app-con-320.png"; sourceTree = "<group>"; };
@@ -276,13 +270,9 @@
 		358935E51BA48559000B2E55 /* Main - Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				170FF2AA1BA4B491005FF804 /* PageContentViewController.h */,
-				170FF2AB1BA4B491005FF804 /* PageContentViewController.m */,
 				170FF2841BA490BB005FF804 /* LoginViewController.h */,
 				170FF2851BA490BB005FF804 /* LoginViewController.m */,
 				170FF2861BA490BB005FF804 /* Main.storyboard */,
-				170FF2891BA490BB005FF804 /* ViewController.h */,
-				170FF28A1BA490BB005FF804 /* ViewController.m */,
 			);
 			name = "Main - Storyboard";
 			sourceTree = "<group>";
@@ -487,9 +477,7 @@
 				170FF28B1BA490BB005FF804 /* LoginViewController.m in Sources */,
 				358935AF1BA483C2000B2E55 /* ProfileViewController.m in Sources */,
 				358935B01BA483C2000B2E55 /* EditProfile.m in Sources */,
-				170FF2AC1BA4B491005FF804 /* PageContentViewController.m in Sources */,
 				358935A11BA48301000B2E55 /* ConnectionListViewController.m in Sources */,
-				170FF28E1BA490BB005FF804 /* ViewController.m in Sources */,
 				170FF2561BA4722B005FF804 /* CindersDating.xcdatamodeld in Sources */,
 				358935B61BA4840E000B2E55 /* SettingsViewController.m in Sources */,
 				358935A21BA48301000B2E55 /* PrivateMessageViewController.m in Sources */,

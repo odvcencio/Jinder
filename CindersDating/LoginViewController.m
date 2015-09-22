@@ -47,9 +47,7 @@
 }
 
 -(void) segueToMatchFeed{
-    
-    // Segue to settings for testing purposes
-    
+        //segues to settings
         NSString * storyboardName = @"StoryboardSettings";
         NSString * viewControllerID = @"SettingsViewController";
         UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
@@ -91,11 +89,11 @@
     //login pfuser
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error)
      {
-         //user = [PFUser currentUser];
+         //hide activity indicator
          [self.activityIndicator stopAnimating];
          self.activityIndicator.hidden=YES;
          
-         
+         //check for facebook user
          if(!user) {
              NSLog(@"No user");
              if(!error) {
@@ -110,12 +108,11 @@
              }
              
          } else if (user) {
-             
+             //login new user for the first time
              NSLog(@"here");
              [self updateUserInformation];
              [self segueToMatchFeed];
              
-            // [self performSegueWithIdentifier:@"segueToProfile" sender:self];
          }
          
      }];
@@ -125,37 +122,44 @@
 #pragma mark - requesting and setting user data
 
 - (void)updateUserInformation {
+    
+    //parameters dictionary
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"id,first_name,email,gender,birthday" forKey:@"fields"];
+    
+    //current user set
     PFUser *thisUser = [PFUser currentUser];
-    
-//    if ([FBSDKAccessToken currentAccessToken]){
-    
+
+    //graph request to facebook to retrieve the parameters specified above
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:parameters];
+    //method call
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if (!error) {
-            
+            //blank dictionary to hold variables from request
             NSDictionary *userDictionary = (NSDictionary *)result;
             
             //create URL
             NSString *facebookID = userDictionary[@"id"];
             
             self.storeAddress   = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
+            //keep facebook URL
             [thisUser setObject:self.storeAddress forKey:@"picURL"];
             
+            //profile dictionary that we keep to pass through
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] init];
             
-
+            //save name
             if (userDictionary[@"first_name"]) {
                 userProfile[@"first_name"] =userDictionary[@"first_name"];
                 [thisUser setObject:userProfile[@"first_name"] forKey:@"firstName"];
                 
             }
-
+            //save gender
             if (userDictionary[@"gender"]) {
                 userProfile[@"gender"] = userDictionary[@"gender"];
                 [thisUser setObject:userProfile[@"gender"] forKey:@"gender"];
             }
+            //save birthday and calculate age
            if (userDictionary[@"birthday"]) {
                 userProfile[@"birthday"] = userDictionary[@"birthday"];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -167,23 +171,14 @@
                 userProfile[@"age"] = @(age);
                [thisUser setObject:userProfile[@"age"] forKey:@"age"];
             }
+            //save email
             if (userDictionary[@"email"]) {
                 userProfile[@"email"] = userDictionary[@"email"];
                 [thisUser setObject:userProfile[@"email"] forKey:@"email"];
             }
-/*             if (userDictionary[USER_INTERESTED_IN]) {
-                userProfile[kUserProfileInterestedInKey] = userDictionary[USER_INTERESTED_IN];
-            }
-            if (userDictionary[USER_RELATIONSHIP_STATUS]) {
-                userProfile[KUserProfileRelationshipStatusKey] = userDictionary[USER_RELATIONSHIP_STATUS];
-            }
- */
-            
-            
-            
+
+            //save to parse
             [thisUser saveInBackground];
-            //[self requestImage];
-            
         }
         else {
             NSLog(@"Error in FB request: %@", error);
