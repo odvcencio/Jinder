@@ -8,4 +8,4 @@ Play for hours!
 
 
 
-![My image](odvcencio.github.com/Jinder/jin.gif)
+![My image](https://github.com/odvcencio/Jinder/jin.gif)
