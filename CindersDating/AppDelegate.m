@@ -21,8 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [Parse setApplicationId:@"uNbKloZofG9CQz9nU7Y9dyAGaBFPTgz8sCvPsEpn"
-                  clientKey:@"dIeshSAOeBsfpOfjFLaOA5xG3JwiXAyJ5HjytgPs"];
+    [Parse setApplicationId:@"Parse_key_goes_here"
+                  clientKey:@"Parse_key_goes_here"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
