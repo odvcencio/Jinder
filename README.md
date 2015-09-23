@@ -6,4 +6,4 @@ Tap on users profile to learn more about them, tap the thumbs up to "like" the u
 
 Play for hours!
 
-![Alt text](/Users/alexcruz/Xcode/Jinder Jin")
+![Alt text](/Users/alexcruz/Xcode/Jinder/jin.gif "Jin")
