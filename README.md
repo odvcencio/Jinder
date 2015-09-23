@@ -7,4 +7,4 @@ Tap on users profile to learn more about them, tap the thumbs up to "like" the u
 Play for hours!
 
 
-![gif](/Users/alexcruz/Xcode/Jinder/jin.gif)
+![gif time](obvcencio.github.com/Jinder/jin.gif)
