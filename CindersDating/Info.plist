@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb117182845302794</string>
+				<string>fb_key_goes_here</string>
 			</array>
 		</dict>
 	</array>
