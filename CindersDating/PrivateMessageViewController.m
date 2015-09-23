@@ -121,7 +121,6 @@
                              incoming = YES;
                              self.title = message.senderDisplayName;
                          }
-                         NSLog(@"adding %@",message.text);
                      }
                  }
                  if ([objects count] != 0)
@@ -219,6 +218,10 @@
 {
  
     [self sendMessage:text];
+}
+
+-(void)didPressAccessoryButton:(UIButton *)sender{
+    //accessories here
 }
 
 #pragma mark JSQMessages CollectionView Data Source
@@ -379,6 +382,7 @@
     NSLog(@"didTapCellAtIndexPath %@", NSStringFromCGPoint(touchLocation));
     
 }*/
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
