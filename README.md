@@ -6,4 +6,4 @@ Tap on users profile to learn more about them, tap the thumbs up to "like" the u
 
 Play for hours!
 
-<img src"/Users/alexcruz/Xcode/Jinder/jin.gi">"
+<img src"/Users/alexcruz/Xcode/Jinder/jin.gi">
