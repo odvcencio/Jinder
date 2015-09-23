@@ -19,6 +19,15 @@
 @property (strong, nonatomic) UIImageView *imageHolder;
 @end
 
+@implementation UINavigationController (ChildStatusBarStyle)
+
+- (UIViewController *)childViewControllerForStatusBarStyle
+{
+    return self.topViewController;
+}
+
+@end
+
 @implementation DelightNewsFeedViewController
 
 //segue to settings
@@ -30,6 +39,13 @@
     SettingsViewController * controller = (SettingsViewController *)[storyboard instantiateViewControllerWithIdentifier:viewControllerID];
     [self presentViewController:controller animated:YES completion:nil];
     
+}
+
+
+//light status bar
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 //segue to inbox

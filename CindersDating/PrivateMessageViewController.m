@@ -73,6 +73,11 @@
 
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 //set timer for reload after view appears
 -(void)viewDidAppear:(BOOL)animated
 {

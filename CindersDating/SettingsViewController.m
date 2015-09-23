@@ -123,6 +123,10 @@
     [current saveInBackground];
     
 }
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 
 -(void)ageGetFromParse{

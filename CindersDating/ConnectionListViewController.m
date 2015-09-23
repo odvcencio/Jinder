@@ -164,6 +164,10 @@ UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bund
     
     
 }
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 //query for chats, add them to array
 
